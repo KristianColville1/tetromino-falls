@@ -1,3 +1,19 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+"""
+Tetromino Falls is terminal based game displayed in the browser.
+"""
+
+import curses
+from curses import wrapper
+
+stdscr = curses.initscr()
+def main(stdscr):
+    """
+    Main function calls all the necessary functions to run the game.
+    """
+    stdscr.clear()
+    stdscr.addstr(10, 10, '\33[44m hello')
+    stdscr.refresh()
+    stdscr.getch()
+
+
+wrapper(main)
