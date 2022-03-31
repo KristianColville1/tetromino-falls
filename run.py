@@ -12,8 +12,11 @@ def main(stdscr):
     """
     stdscr.clear()
 
-    MAIN_BG = curses.init_pair(1, curses.COLOR_BLACK, curses.COLOR_BLACK)
-    stdscr.addstr(10, 10, '\33[44m hello', MAIN_BG)
+    curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLUE)
+    stdscr.addstr(3, 7, '  ', curses.color_pair(1))
+    stdscr.addstr(3, 8, '  ', curses.color_pair(1))
+    stdscr.addstr(3, 9, '  ', curses.color_pair(1))
+    stdscr.addstr(3, 10, '  ', curses.color_pair(1))
     stdscr.refresh()
     stdscr.getch()
 
