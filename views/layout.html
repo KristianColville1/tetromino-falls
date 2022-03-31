@@ -10,16 +10,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/attach/attach.js"></script>
     <title>Python Terminal by Code Institute</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        :root {
+            --black: #000000ff;
+            --dark-purple: #362e47ff;
+            --dodger-blue: #1098f7ff;
+            --dark-sea-green: #88b59bff;
+            --sunglow: #ffd23fff;
+            --orange-red-crayola: #ff5a5fff;
+            --lava: #c81d25ff;
+        }
         body {
             font-family: Arial;
         }
 
+        h1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 4rem;
+            position: absolute;
+            left: 50%;
+            top: -2.5%;
+            transform: translateX(-50%);
+        }
+        
         /**
         * Default styles for xterm.js
         */
 
         .xterm {
-            font-feature-settings: "liga"0;
+            font-feature-settings: "liga", 0;
             position: relative;
             user-select: none;
             -ms-user-select: none;
