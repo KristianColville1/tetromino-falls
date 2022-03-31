@@ -31,8 +31,61 @@
             left: 50%;
             top: -2.5%;
             transform: translateX(-50%);
+
+            animation-name: heading;
+            animation-duration: 20s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
         }
-        
+
+        @keyframes heading {
+            0%{
+                color: var(--black);
+            }
+            9%{
+                color: var(--dark-purple);
+            }
+            18%{
+                color: var(--dodger-blue);
+            }
+            27%{
+                color: var(--dark-sea-green);
+            }
+            36%{
+                color: var(--sunglow);
+            }
+            45%{
+                color: var(--orange-red-crayola);
+            }
+            54%{
+                color: var(--lava);
+            }
+            63%{
+                color: var(--orange-red-crayola);
+            }
+            72%{
+                color: var(--sunglow);
+            }
+            81%{
+                color: var(--dark-sea-green);
+            }
+            89%{
+                color: var(--dodger-blue);
+            }
+            95%{
+                color: var(--dark-purple);
+            }
+            100%{
+                color: var(--black);
+            }
+        }
+
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
         /**
         * Default styles for xterm.js
         */
@@ -174,15 +227,33 @@
             text-decoration: underline;
         }
 
+        #terminal {
+            box-shadow: 8px 8px 10px grey;
+            background-color: var(--black);
+            padding: 8px 10px;
+            border-radius: 8px;
+        }
+        
         button {
             width: 200px;
             height: 40px;
-            background-color: #E84610;
+            font-size: 1.2rem;
+            font-weight: 900;
+            background-color: var(--sunglow);
             border: 1px solid grey;
             color: white;
             text-transform: uppercase;
+            text-shadow: 4px 2px 3px grey;
+            box-shadow: 6px 6px 10px grey;
             margin: 10px;
             border-radius: 8px;
+
+            position: absolute;
+            left: 50%;
+            bottom: -65px;
+            transform: translateX(-50%);
+
+            cursor: pointer;
         }
     </style>
 </head>
