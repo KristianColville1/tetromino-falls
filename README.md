@@ -49,12 +49,24 @@ Developer: Kristian Colville
 
 
 ## Project Goals
-Design an interactive game that takes advantage of a [command line interface](https://en.wikipedia.org/wiki/Command-line_interface). It should be highly attractive and visually pleasing to the user of the terminal game. 
-The game needs is expected to run within a terminal so should be built to take advantage of this scenario.
-The project should be deployed to Heroku. The expectation is that python is used throughout.
+The goals of this project include:
+- Designing an interactive game that takes advantage of a [command line interface](https://en.wikipedia.org/wiki/Command-line_interface).
+- It should be highly attractive and visually pleasing to the user of the terminal game. 
+- The game is expected to run within a terminal so should be built to take advantage of this scenario.
+- The project should be deployed to Heroku.
+- The expectation is that the [python language](https://en.wikipedia.org/wiki/Python_(programming_language)) is used throughout.
 
 ### User Goals
+
+- To play a terminal based game that is fun and easy to use
+- Be able to interact with the game in real time and not stall while waiting for input
 ### Site Owners Goals
+
+- Create a game that is fun and easy for the user to understand
+- Make the terminal game visually attractive to users
+- Circumvent waiting for user input within the terminal
+- Create the game using python
+
 [Back to Top](#table-of-contents)
 ## User Experience
 ### Target Audience
