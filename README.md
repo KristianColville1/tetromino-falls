@@ -25,7 +25,8 @@ Developer: Kristian Colville
     * [Main Tech](#main-tech)
     * [Python Packages Used](#python-packages-used)
 * [Logic](#logic)
-    *[Initial Flow](#initial-flow)
+    * [Initial Flow](#initial-flow)
+    * [Python Logic](#python-logic)
 * [Features](#features)
 * [Data Model](#data-model)
 * [Validation](#validation)
@@ -48,6 +49,10 @@ Developer: Kristian Colville
 
 
 ## Project Goals
+Design an interactive game that takes advantage of a [command line interface](https://en.wikipedia.org/wiki/Command-line_interface). It should be highly attractive and visually pleasing to the user of the terminal game. 
+The game needs is expected to run within a terminal so should be built to take advantage of this scenario.
+The project should be deployed to Heroku. The expectation is that python is used throughout.
+
 ### User Goals
 ### Site Owners Goals
 [Back to Top](#table-of-contents)
