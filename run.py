@@ -16,7 +16,7 @@ curses.init_pair(5, curses.COLOR_WHITE, curses.COLOR_GREEN)
 curses.init_pair(6, curses.COLOR_WHITE, curses.COLOR_MAGENTA)
 curses.init_pair(7, curses.COLOR_WHITE, curses.COLOR_WHITE)
 
-# text curses colors initializes
+# text curses colors initialized
 curses.init_pair(8,  curses.COLOR_BLUE, curses.COLOR_BLACK)
 curses.init_pair(9,  curses.COLOR_CYAN, curses.COLOR_BLACK)
 curses.init_pair(10, curses.COLOR_RED, curses.COLOR_BLACK)
@@ -57,8 +57,8 @@ def main(stdscr):
     file.close()
 
     welcome_window.addstr(f'{text}', CYAN_TEXT)
-    welcome_window.addstr(24, 25, 'Created by Kristian Colville', YELLOW_TEXT)
-    welcome_window.addstr(27, 15, 'Press any key to continue..', RED_TEXT)
+    welcome_window.addstr(18, 25, 'Created by Kristian Colville', YELLOW_TEXT)
+    welcome_window.addstr(22, 15, 'Press any key to continue..', RED_TEXT)
     welcome_window.getch()
 
 # creates an object to initialize the curser objects using the main function
