@@ -1,6 +1,7 @@
             Instructions
 
-Each shape is called a tetromino because it is made up of 4 squares.
+Each shape is called a tetromino.
+This is because they are composed of 4 squares and connect at right angles.
 
     To move the shape 'left' use the LEFT_KEY.
     To move the shape 'right' use the RIGHT_KEY.

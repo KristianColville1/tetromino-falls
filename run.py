@@ -10,6 +10,18 @@ from curses import wrapper
 # ternary operator taken from https://www.delftstack.com/howto/python/python-clear-console/ 
 clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
+# tetromino shapes
+SHAPES = {
+    'I':[
+        ],
+    'J':[],
+    'L':[],
+    'O':[],
+    'T':[],
+    'S':[],
+    'Z':[],
+}
+
 def print_welcome_text():
     """
     Prints welcome text to terminal for user and waits for 3 seconds before moving on.
@@ -118,7 +130,7 @@ def exit_program():
     clearConsole()
     sys.exit()
 
-def main():
+def main(stdscr):
     """
     Main function calls all the necessary functions to run the game.
     """
@@ -163,6 +175,21 @@ def main():
     green_txt = curses.color_pair(12)
     purple_txt = curses.color_pair(13)
     white_txt = curses.color_pair(14)
+
+    stdscr.clear()
+    test_window = curses.newwin(10, 10, 10, 10)
+    for _ in range(1000):
+        test_window.clear()
+        color = blue
+
+        if _ % 2 == 0:
+            color = red
+
+        test_window.addstr(2, 2, '    ' + '', color)
+        test_window.refresh()
+        time.sleep(1)
+
+    stdscr.getch()
 
 
 print_welcome_text()
