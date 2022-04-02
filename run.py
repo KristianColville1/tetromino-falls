@@ -25,14 +25,58 @@ def get_user_name():
         name = input('Enter your name: ')
         if len(name) < 2 or len(name) > 12:
             raise ValueError(
-                f'username must be at least 2 characters and no more than 12'
+                'username must be at least 2 characters and no more than 12'
             )
     except ValueError as error:
         print(f'Invalid username entered: {error}, please try again.\n\n\n')
         return False
     return name
 
+
+def what_next_user():
+    """
+    Asks the user what they would like to do next.
+    Start the game, load instructions or exit.
+    """
+    try:
+        print(f'\n\nWhat do you want to do {USER_NAME}.')
+        print("Enter 'p' to play the game.")
+        print("Enter 'i' for instructions..")
+        print("Enter 'e' to exit the program.")
+        user_decision = input('f\n So What do you want to do next {USER_NAME}?\n ')
+        if user_decision in ('p', 'i', 'e'):
+            raise ValueError(
+                f'Look buddy, you need to enter something else {user_decision} is not valid'
+            )
+    except ValueError as error:
+        print(f'Invalid data received... {error}, please try again')
+        return False
+    return user_decision
+
+def get_next_action():
+    """
+    Gets the users next action and will decide what route to take.
+    Play the game, get instructions or exit program
+    """
+    # gets and checks the users decision on next actions
+    decision = what_next_user()
+    if decision is False:
+        while decision is False:
+            decision = what_next_user()
+
+    if decision is 'p':
+        start_game()
+    elif decision is 'i':
+        get_instructions()
+    else:
+        exit_program()
+
+def start_game():
     
+def get_instructions():
+
+def exit_program():
+
 def main():
     """
     Main function calls all the necessary functions to run the game.
@@ -47,5 +91,7 @@ USER_NAME = get_user_name()
 if USER_NAME is False:
     while USER_NAME is False:
         USER_NAME = get_user_name()
+
+get_next_action()
 
 main()
