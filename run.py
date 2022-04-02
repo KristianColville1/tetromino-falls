@@ -2,6 +2,7 @@
 Tetromino Falls is terminal based game displayed in the browser.
 """
 import time
+import sys
 from curses import wrapper
 
 
@@ -85,13 +86,14 @@ def get_instructions():
     file = open('instructions.txt')
     instructions = file.read()
     print(f"{instructions}\033[0m")
+    file.close()
 
 
 def exit_program():
     """
     Exits the program if the user decides to quit the game.
     """
-
+    sys.exit()
 
 def main():
     """
