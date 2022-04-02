@@ -43,8 +43,8 @@ def what_next_user():
         print("Enter 'p' to play the game.")
         print("Enter 'i' for instructions..")
         print("Enter 'e' to exit the program.")
-        user_decision = input('f\n So What do you want to do next {USER_NAME}?\n ')
-        if user_decision in ('p', 'i', 'e'):
+        user_decision = input(f'\n So what do you want to do next {USER_NAME}?\n ')
+        if user_decision not in ('p', 'i', 'e'):
             raise ValueError(
                 f'Look buddy, you need to enter something else {user_decision} is not valid'
             )
@@ -64,18 +64,34 @@ def get_next_action():
         while decision is False:
             decision = what_next_user()
 
-    if decision is 'p':
+    if decision == 'p':
         start_game()
-    elif decision is 'i':
+    elif decision == 'i':
         get_instructions()
     else:
         exit_program()
 
 def start_game():
-    
+    """
+    Starts the game and creates window objects.
+    """
+
+
 def get_instructions():
+    """
+    When called it will get instructions on how to play the game.
+    """
+    print('\033[0;33m')
+    file = open('instructions.txt')
+    instructions = file.read()
+    print(f"{instructions}\033[0m")
+
 
 def exit_program():
+    """
+    Exits the program if the user decides to quit the game.
+    """
+
 
 def main():
     """
