@@ -13,7 +13,7 @@ def print_welcome_text():
     """
     file = open('welcome-msg.txt')
     message = file.read()
-    print('\n\n\n' + message + '\n\n\n')
+    print('\n\n\n\033[31m' + message + '\033[0m\n\n\n')
     file.close()
     time.sleep(3)
 
