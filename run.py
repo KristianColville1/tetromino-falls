@@ -7,16 +7,23 @@ import curses
 from curses import wrapper
 
 
-
 def print_welcome_text():
     """
     Prints welcome text to terminal for user and waits for 3 seconds before moving on.
     """
-    file = open('welcome-msg.txt')
-    message = file.read()
-    print('\n\n\n\033[31m' + message + '\033[0m\n\n\n')
-    file.close()
+    try:
+        file = open('welcome-msg.txt', encoding='utf8')
+        message = file.read()
+        print('\n\n\n\033[31m' + message + '\033[0m\n\n\n')
+        file.close()
+        if len(message) < 1:
+            raise IOError(
+                'An error occurred fetching the welcome message.. sorry about that..'
+            )
+    except IOError as error:
+        print(f'Oops something went wrong!\n\033[31m{error}\033[0m')
     time.sleep(3)
+
 
 def get_user_name():
     """
@@ -26,7 +33,7 @@ def get_user_name():
         name = input('Enter your name: ')
         if len(name) < 4 or len(name) > 12:
             raise ValueError(
-                'username must be at least 4 characters and no more than 12'
+                'username must be at least 4 characters\n and no more than 12'
             )
     except ValueError as error:
         print(f'Invalid username entered: {error}, please try again.\n\n\n')
@@ -40,17 +47,17 @@ def what_next_user():
     Start the game, load instructions or exit.
     """
     try:
-        print(f'\n\nWhat do you want to do {USER_NAME}.')
-        print("Enter 'p' to play the game.")
-        print("Enter 'i' for instructions..")
-        print("Enter 'e' to exit the program.")
-        user_decision = input(f'\n So what do you want to do next {USER_NAME}?\n ')
+        print(f'\n\nHere are the options available {USER_NAME}:\n')
+        print("\t\033[0;33mEnter '\033[31mp\033[0;33m' to play the game.")
+        print("\tEnter '\033[31mi\033[0;33m' for instructions..")
+        print("\tEnter '\033[31me\033[0;33m' to exit the program.\033[0m")
+        user_decision = input(f'\n So what will it be {USER_NAME}?\n ')
         if user_decision not in ('p', 'i', 'e'):
             raise ValueError(
-                f'Look buddy, you need to enter something else {user_decision} is not valid'
+                f"""You need to enter something else as \033[36m{user_decision}\033[0m is invalid"""
             )
     except ValueError as error:
-        print(f'Invalid data received... {error}, please try again')
+        print(f'\n\t\033[31mInvalid data received...\033[0m \n{error}, please try again')
         return False
     return user_decision
 
@@ -83,10 +90,18 @@ def get_instructions():
     When called it will get instructions on how to play the game.
     """
     print('\033[0;33m')
-    file = open('instructions.txt')
-    instructions = file.read()
-    print(f"{instructions}\033[0m")
-    file.close()
+    try:
+        file = open('instructions.txt', encoding='utf8')
+        instructions = file.read()
+        file.close()
+        print(f"{instructions}\033[0m")
+        if len(instructions) < 1:
+            raise IOError(
+                "Failed to read instructions from welcome.txt..."
+            )
+    except IOError as error:
+        print(f'\033[31m\n{error}\033[0m')
+
 
 
 def exit_program():

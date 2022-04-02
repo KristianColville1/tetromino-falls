@@ -2,11 +2,11 @@
 
 Each shape is called a tetromino because it is made up of 4 squares.
 
-To move the shape 'left' use the LEFT_KEY.
-To move the shape 'right' use the RIGHT_KEY.
-To move the shape 'down' use the DOWN_KEY.
+    To move the shape 'left' use the LEFT_KEY.
+    To move the shape 'right' use the RIGHT_KEY.
+    To move the shape 'down' use the DOWN_KEY.
 
-If you want to rotate the shape use the SPACE_BAR
+    If you want to rotate the shape use the SPACE_BAR
 
 To successfully score points, try get a completed line horizontally.
 Each line that is completed horizontally will increase your score.
