@@ -192,6 +192,9 @@ You should have a local copy of the repository to use on your machine.
 
 [Back to Top](#table-of-contents)
 ## Credits
+
+Ternary operator for clearing the console if an error occurs taken from [Delf Stack](https://www.delftstack.com/howto/python/python-clear-console/).
+
 [Back to Top](#table-of-contents)
 ## Acknowledgements
 [Back to Top](#table-of-contents)

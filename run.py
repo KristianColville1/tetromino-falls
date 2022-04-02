@@ -4,8 +4,11 @@ Tetromino Falls is terminal based game displayed in the browser.
 import time
 import sys
 import curses
+import os
 from curses import wrapper
 
+# ternary operator taken from https://www.delftstack.com/howto/python/python-clear-console/ 
+clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
 def print_welcome_text():
     """
@@ -21,6 +24,7 @@ def print_welcome_text():
                 'An error occurred fetching the welcome message.. sorry about that..'
             )
     except IOError as error:
+        clearConsole()
         print(f'Oops something went wrong!\n\033[31m{error}\033[0m')
     time.sleep(3)
 
@@ -36,6 +40,7 @@ def get_user_name():
                 'username must be at least 4 characters\n and no more than 12'
             )
     except ValueError as error:
+        clearConsole()
         print(f'Invalid username entered: {error}, please try again.\n\n\n')
         return False
     return name
@@ -57,6 +62,7 @@ def what_next_user():
                 f"""You need to enter something else as \033[36m{user_decision}\033[0m is invalid"""
             )
     except ValueError as error:
+        clearConsole()
         print(f'\n\t\033[31mInvalid data received...\033[0m \n{error}, please try again')
         return False
     return user_decision
@@ -100,6 +106,7 @@ def get_instructions():
                 "Failed to read instructions from welcome.txt..."
             )
     except IOError as error:
+        clearConsole()
         print(f'\033[31m\n{error}\033[0m')
 
 
@@ -108,6 +115,7 @@ def exit_program():
     """
     Exits the program if the user decides to quit the game.
     """
+    clearConsole()
     sys.exit()
 
 def main():
