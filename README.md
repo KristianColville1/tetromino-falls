@@ -106,6 +106,17 @@ The goals of this project include:
 ### Testing User Stories
 [Back to Top](#table-of-contents)
 ## Bugs
+| Bug | Fix |
+| --- | --- |
+| Curses objects interfering with user input | Tried refactoring code blocks and discovered after trying to make a window class that the issue was because the objects were initialized before trying to get user input, I separated the code structure in run.py and this helped|
+| 1 | 2 |
+| 1 | 2 |
+| 1 | 2 |
+| 1 | 2 |
+| 1 | 2 |
+| 1 | 2 |
+| 1 | 2 |
+| 1 | 2 |
 [Back to Top](#table-of-contents)
 ## Deployment
 [Back to Top](#table-of-contents)
