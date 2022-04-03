@@ -196,18 +196,28 @@ def main(stdscr):
     #returns the colors for the game objects after initializing the curses
     colors = start_curses()
 
-    stdscr.clear()
-    test_window = curses.newwin(10, 10, 10, 10)
-    for _ in range(1000):
-        test_window.clear()
-        color = colors[random.randrange(0, 6)]
-
-        if _ % 2 == 0:
-            color = colors[random.randrange(0, 6)]
-
-        test_window.addstr(2, 2, '    ' + '', color)
-        test_window.refresh()
-        time.sleep(1)
+    x, y = 0, 0
+    while True:
+        
+        try:
+            key = stdscr.getkey()
+            if key == 'KEY_RIGHT':
+                x += 1
+            elif key == 'KEY_LEFT':
+                x -= 1
+            elif key == 'KEY_DOWN':
+                y += 1
+            elif key == 'KEY_UP':
+                y -= 1
+            stdscr.clear()
+            stdscr.addstr(y, x, '     ', colors[random.randrange(0, 6)])
+            stdscr.refresh()
+            if key not in ('KEY_RIGHT', 'KEY_LEFT', 'KEY_DOWN', 'KEY_UP'):
+                raise KeyError(
+                    f'The {key} not work try something else'
+                )
+        except KeyError as error:
+            stdscr.addstr(20, 20, f'{error}')
 
     stdscr.getch()
 
