@@ -1,25 +1,41 @@
 """
 Tetromino Falls is terminal based game displayed in the browser.
 """
+
 import time
 import sys
 import curses
 import os
+import random
 from curses import wrapper
+from curses.textpad import rectangle
 
-# ternary operator taken from https://www.delftstack.com/howto/python/python-clear-console/ 
+# ternary operator taken from https://www.delftstack.com/howto/python/python-clear-console/
 clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
 # tetromino shapes
 SHAPES = {
     'I':[
+        [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         ],
-    'J':[],
-    'L':[],
-    'O':[],
-    'T':[],
-    'S':[],
-    'Z':[],
+    'J':[
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ],
+    'L':[
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ],
+    'O':[
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ],
+    'T':[
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ],
+    'S':[
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ],
+    'Z':[
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ],
 }
 
 def print_welcome_text():
@@ -130,11 +146,12 @@ def exit_program():
     clearConsole()
     sys.exit()
 
-def main(stdscr):
+def start_curses():
     """
-    Main function calls all the necessary functions to run the game.
+    Initializes the curses objects.
+    Specifically allows the colors to be used and windows to be created.
+    Returns the colors after curses color pairs are initialized.
     """
-    # # Initializes the curses objects
     curses.initscr()
 
     # Allows the curses colors to be accessed and used
@@ -158,7 +175,7 @@ def main(stdscr):
     curses.init_pair(13, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
     curses.init_pair(14, curses.COLOR_WHITE, curses.COLOR_BLACK)
 
-    # background colors with white text assigned to constants
+    # background colors with white text
     blue = curses.color_pair(1)
     cyan = curses.color_pair(2)
     red = curses.color_pair(3)
@@ -167,23 +184,26 @@ def main(stdscr):
     purple = curses.color_pair(6)
     white = curses.color_pair(7)
 
-    # text colors with black bg assigned to constants
-    blue_txt = curses.color_pair(8)
-    cyan_txt = curses.color_pair(9)
-    red_txt = curses.color_pair(10)
-    yellow_txt = curses.color_pair(11)
-    green_txt = curses.color_pair(12)
-    purple_txt = curses.color_pair(13)
-    white_txt = curses.color_pair(14)
+    colors = [blue, cyan, red, yellow, green, purple, white]
+
+    return colors
+
+def main(stdscr):
+    """
+    Main function calls all the necessary functions to run the game.
+    """
+
+    #returns the colors for the game objects after initializing the curses
+    colors = start_curses()
 
     stdscr.clear()
     test_window = curses.newwin(10, 10, 10, 10)
     for _ in range(1000):
         test_window.clear()
-        color = blue
+        color = colors[random.randrange(0, 6)]
 
         if _ % 2 == 0:
-            color = red
+            color = colors[random.randrange(0, 6)]
 
         test_window.addstr(2, 2, '    ' + '', color)
         test_window.refresh()
