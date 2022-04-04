@@ -182,8 +182,18 @@ def start_curses():
 
 def rotate_shape(shape_array):
     """
-    Rotate shape takes one argument called shape.
-    The argument """
+    Rotate shape takes one argument called shape_array.
+    The argument returns the shape array after rotating it counter clockwise.
+    """
+    rows, cols = len(shape_array), len(shape_array[0])
+    rotated_shape = [[None] * rows for _ in range(cols)]
+
+
+    for col in range(cols):
+        for row in range(rows - 1, -1, -1):
+            rotated_shape[cols - col - 1][row] = shape_array[rows][cols]
+
+    return rotated_shape
 
 def main(stdscr):
     """
