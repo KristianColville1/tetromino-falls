@@ -15,27 +15,19 @@ clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
 # tetromino shapes
 SHAPES = {
-    'I':[
-        [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ],
-    'J':[
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ],
-    'L':[
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ],
-    'O':[
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ],
-    'T':[
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ],
-    'S':[
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ],
-    'Z':[
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ],
+    'I':[0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0]
+        ,
+    'J':[0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
+        ,
+    'L':[0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0]
+        ,
+    'O':[0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0]
+        ,
+    'T':[1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ,
+    'S':[0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ,
+    'Z':[0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 }
 
 def print_welcome_text():
@@ -196,9 +188,20 @@ def main(stdscr):
     #returns the colors for the game objects after initializing the curses
     colors = start_curses()
 
+    stdscr.clear()
+
+    rectangle(stdscr, 1, 4, 21, 42)
+    stdscr.refresh()
+    # arr = SHAPES['I']
+
+    # for num in arr:
+    #     if num == 1:
+    #         stdscr.addstr('  ', colors[random.randrange(6)])
+    # # stdscr.addstr(f'{arr}', colors[random.randrange(6)])
+    # stdscr.refresh()
+
     x, y = 0, 0
     while True:
-        
         try:
             key = stdscr.getkey()
             if key == 'KEY_RIGHT':
@@ -211,6 +214,7 @@ def main(stdscr):
                 y -= 1
             stdscr.clear()
             stdscr.addstr(y, x, '     ', colors[random.randrange(0, 6)])
+            rectangle(stdscr, 1, 4, 21, 42)
             stdscr.refresh()
             if key not in ('KEY_RIGHT', 'KEY_LEFT', 'KEY_DOWN', 'KEY_UP'):
                 raise KeyError(
