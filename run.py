@@ -135,6 +135,7 @@ def get_instructions():
 def exit_program():
     """
     Exits the program if the user decides to quit the game.
+    Loops using recursion until valid input is entered.
     """
     try:
         check_input = 'Are you absolutely sure you want to exit the program? y/n '
@@ -147,11 +148,29 @@ def exit_program():
             get_next_action()
         elif user_decision == 'y':
             clearConsole()
+            thanks_for_playing()
             sys.exit()
     except ValueError as error:
         print(f'{error}')
         exit_program()
 
+def thanks_for_playing():
+    """
+    When the user decides to quit the game this message is displayed in the terminal
+    """
+    try:
+        file = open('goodbye.txt', encoding='utf8')
+        message = file.read()
+        clearConsole()
+        print(message)
+        time.sleep(4)
+        file.close()
+        if file is None:
+            raise IOError(
+                'The thank you message failed to display...'
+            )
+    except IOError as error:
+        print(f"An error has occurred..\n {error}")
 
 
 def start_curses():
