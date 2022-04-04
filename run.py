@@ -10,6 +10,7 @@ import random
 from curses import wrapper
 from curses.textpad import rectangle
 
+
 # ternary operator taken from https://www.delftstack.com/howto/python/python-clear-console/
 clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
@@ -135,8 +136,23 @@ def exit_program():
     """
     Exits the program if the user decides to quit the game.
     """
-    clearConsole()
-    sys.exit()
+    try:
+        check_input = 'Are you absolutely sure you want to exit the program? y/n '
+        user_decision = input(f'\033[0;33m{check_input}:\033[0m')
+        if user_decision not in ('y', 'n'):
+            raise ValueError(
+                f'\n\033[31m{user_decision}\033[0m is not valid input, try again...\n'
+            )
+        if user_decision == 'n':
+            get_next_action()
+        elif user_decision == 'y':
+            clearConsole()
+            sys.exit()
+    except ValueError as error:
+        print(f'{error}')
+        exit_program()
+
+
 
 def start_curses():
     """
