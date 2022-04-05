@@ -259,32 +259,21 @@ def main(stdscr):
     """
     Main function calls all the necessary functions to run the game.
     """
-
     #returns the colors for the game objects after initializing the curses
     colors = start_curses()
-
+    
     stdscr.clear()
-
     rectangle(stdscr, 1, 4, 21, 42)
     stdscr.refresh()
-    # arr = SHAPES['I']
-
-    # for num in arr:
-    #     if num == 1:
-    #         stdscr.addstr('  ', colors[random.randrange(6)])
-    # # stdscr.addstr(f'{arr}', colors[random.randrange(6)])
-    # stdscr.refresh()
     shape = SHAPES['I']
     color = colors[random.randrange(6)]
-    x, y = 0, 0
+    y_axis, x_axis = 0, 0
     
+    # creates a matrix for the game grid to manipulate
     game_grid = create_game_grid()
 
     while True:
         try:
-            y = min(y, 20)
-            y = max(y, 20)
-            x = min(x, 40)
             y += 1
             time.sleep(0.3)
             key = stdscr.getkey()
