@@ -149,7 +149,7 @@ As mentioned above some CSS was implemented. I chose to use [Google Fonts](https
 [Back to Top](#table-of-contents)
 ## Logic
 ### Initial Flow
-![Initial Flow](assets/flowcharts/initial-flow.drawio.png)
+![Initial Flow](assets/images/flowcharts/initial-flow.drawio.png)
 ### Python Logic
 [Back to Top](#table-of-contents)
 ## Features
@@ -381,7 +381,7 @@ As mentioned above some CSS was implemented. I chose to use [Google Fonts](https
 | Bug | Fix |
 | --- | --- |
 | Curses objects interfering with user input | Tried refactoring code blocks and discovered after trying to make a window class that the issue was because the objects were initialized before trying to get user input, I separated the code structure in run.py and this helped|
-| 1 | 2 |
+| Shapes not displaying correctly with when adding shapes to board, they end up just displaying cubes | (in progress) |
 | 1 | 2 |
 | 1 | 2 |
 | 1 | 2 |
