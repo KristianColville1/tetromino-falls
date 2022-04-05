@@ -244,6 +244,17 @@ def get_random_shape():
     return rand_shape
 
 
+def create_game_grid():
+    """
+    Creates a matrix for the game grid for Tetromino Falls"""
+    grid_matrix = []
+    for j in range(21):
+        grid_matrix.append([])
+        for _ in range(21):
+            grid_matrix[j].append([0])
+    return grid_matrix
+
+
 def main(stdscr):
     """
     Main function calls all the necessary functions to run the game.
@@ -268,12 +279,7 @@ def main(stdscr):
     x, y = 0, 0
     
     game_grid = create_game_grid()
-    grid_matrix = []
 
-    for j in range(21):
-        grid_matrix.append([])
-        for i in range(21):
-            grid_matrix[j].append([0])
     while True:
         try:
             y = min(y, 20)
