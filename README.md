@@ -116,7 +116,30 @@ The goals of this project include:
 [Back to Top](#table-of-contents)
 ## Design
 ### Color Scheme
+
+Although not a requirement for this project some CSS was implemented.
+I chose to make the title for the website an animation fading through 7 colors.
+
+The colors of the terminal shapes were limited by the capabilities of the curses module.
+The colors inside the terminal for your local machine could look different to the ones displayed in Tetromino Falls terminal.
+
+The colors used inside the terminal:
+
+- blue
+- cyan
+- red
+- yellow
+- green
+- purple
+- white
+
+Color palette used in HTML & CSS:
+
+![Color palette](assets/images/tetromino-falls.png)
+
 ### Fonts
+As mentioned above some CSS was implemented. I chose to use [Google Fonts](https://fonts.google.com/) for some HTML within the website. The font I used was [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P). This font helped add some cohesive style to project for viewing in a web page.
+
 ### Structure
 ### Wireframes
 [Back to Top](#table-of-contents)
