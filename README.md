@@ -88,6 +88,7 @@ The goals of this project include:
 [Back to Top](#table-of-contents)
 ## Logic
 ### Initial Flow
+![Initial Flow](assets/flowcharts/initial-flow.drawio)
 ### Python Logic
 [Back to Top](#table-of-contents)
 ## Features
