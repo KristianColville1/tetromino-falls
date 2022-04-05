@@ -43,8 +43,8 @@ Developer: Kristian Colville
 * [Deployment](#deployment)
     * [Version Control](#version-control)
     * [Heroku](#heroku)
-    * [Local Machine](#local-machine)
     * [Cloning this Repository](#cloning-this-repository)
+    * [Local Machine](#local-machine)
 * [Credits](#credits)
 * [Acknowledgements](#acknowledgements)
 
@@ -369,12 +369,6 @@ The goals of this project include:
 
 [Back to Top](#table-of-contents)
 ## Deployment
-### Local Machine
-I used [Ubuntu](https://ubuntu.com/) as my [operating system](https://en.wikipedia.org/wiki/Operating_system) so I could use the non windows version of the python programming language and access the normal [curses module](https://docs.python.org/3/howto/curses.html#the-python-curses-module).
-
-This decision was made to take advantage of the terminal template provided by [Code Institute](https://codeinstitute.net/ie/) for this project.
-
-Please visit the embedded links above for more information.
 ### Version Control
 I used [Visual Studio Code](https://code.visualstudio.com/) as a local repository and IDE & [GitHub](https://github.com/) as a remote repository.
 
@@ -438,6 +432,20 @@ Instructions:
 8. Hit Enter
 
 You should have a local copy of the repository to use on your machine.
+
+### Local Machine
+I used [Ubuntu](https://ubuntu.com/) as my [operating system](https://en.wikipedia.org/wiki/Operating_system) so I could use the non windows version of the python programming language and access the normal [curses module](https://docs.python.org/3/howto/curses.html#the-python-curses-module).
+
+This decision was made to take advantage of the terminal template provided by [Code Institute](https://codeinstitute.net/ie/) for this project.
+
+Please visit the embedded links above for more information.
+
+To run the game from your local machine:
+
+- Open a new terminal
+- Type python3 run.py
+
+If you have python correctly installed and the necessary packages the game should run in your terminal.
 
 [Back to Top](#table-of-contents)
 ## Credits
