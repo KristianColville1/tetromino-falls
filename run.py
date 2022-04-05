@@ -16,7 +16,7 @@ clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
 # tetromino shapes
 SHAPES = {
-    'I':[[0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 0, 0]]
+    'I':[[2, 3], [2, 3], [2, 3], [2, 3]]
         ,
     'J':[[0, 1, 0, 0], [0, 1, 0, 0], [1, 1, 0, 0], [0, 0, 0, 0]]
         ,
@@ -112,6 +112,7 @@ def start_game():
     """
     wrapper(main)
 
+
 def get_instructions():
     """
     When called it will get instructions on how to play the game.
@@ -129,7 +130,6 @@ def get_instructions():
     except IOError as error:
         clearConsole()
         print(f'\033[31m\n{error}\033[0m')
-
 
 
 def exit_program():
@@ -153,6 +153,7 @@ def exit_program():
     except ValueError as error:
         print(f'{error}')
         exit_program()
+
 
 def thanks_for_playing():
     """
@@ -215,6 +216,7 @@ def start_curses():
 
     return colors
 
+
 def rotate_shape(shape_array):
     """
     Rotate shape takes one argument called shape_array.
@@ -229,6 +231,18 @@ def rotate_shape(shape_array):
             rotated_shape[cols - col - 1][row] = shape_array[rows][cols]
 
     return rotated_shape
+
+
+def get_random_shape():
+    """
+    When called it returns a random shape from SHAPES.
+    The returned data is a 2D array.
+    """
+    keys = ['I', 'J', 'L', 'O', 'T', 'S', 'Z']
+
+    rand_shape = SHAPES[keys[random.randrange(7)]]
+    return rand_shape
+
 
 def main(stdscr):
     """
@@ -249,10 +263,24 @@ def main(stdscr):
     #         stdscr.addstr('  ', colors[random.randrange(6)])
     # # stdscr.addstr(f'{arr}', colors[random.randrange(6)])
     # stdscr.refresh()
-
+    shape = SHAPES['I']
+    color = colors[random.randrange(6)]
     x, y = 0, 0
+    
+    game_grid = create_game_grid()
+    grid_matrix = []
+
+    for j in range(21):
+        grid_matrix.append([])
+        for i in range(21):
+            grid_matrix[j].append([0])
     while True:
         try:
+            y = min(y, 20)
+            y = max(y, 20)
+            x = min(x, 40)
+            y += 1
+            time.sleep(0.3)
             key = stdscr.getkey()
             if key == 'KEY_RIGHT':
                 x += 1
@@ -263,7 +291,7 @@ def main(stdscr):
             elif key == 'KEY_UP':
                 y -= 1
             stdscr.clear()
-            stdscr.addstr(y, x, '     ', colors[random.randrange(0, 6)])
+            
             rectangle(stdscr, 1, 4, 21, 42)
             stdscr.refresh()
             if key not in ('KEY_RIGHT', 'KEY_LEFT', 'KEY_DOWN', 'KEY_UP'):
