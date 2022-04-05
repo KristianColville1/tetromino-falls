@@ -102,14 +102,16 @@ The goals of this project include:
 
 ### Site Owner
 
-11. I want the user to understand the game rules easily
-12. I want the user of the terminal game to not have to constantly enter input
-13. I want the user to be able to update the database with there score
-14. I want the user to be able to see the top scores
-15. I want my terminal game to have different shapes and colors for the game pieces
-16. I want my terminal game to be interactive
-17. Any known errors should be handled and feedback should be provided to the user
-18. If any errors occur the user should be able to navigate to the desired area in the terminal
+11. I want to see no profanity in the scores or terminal
+12. I want the user to understand the game rules easily
+13. I want the user of the terminal game to not have to constantly enter input
+14. I want the user to be able to update the database with there score
+16. I want the user to be able to see the top scores
+17. I want my terminal game to have different shapes and colors for the game pieces
+18. I want my terminal game to be interactive
+19. Any known errors should be handled and feedback should be provided to the user
+20. If any errors occur the user should be able to navigate to the desired area in the terminal
+
 [Back to Top](#table-of-contents)
 ## Design
 ### Color Scheme
@@ -140,6 +142,122 @@ The goals of this project include:
 ## Testing
 ### Device Testing
 ### Testing User Stories
+
+1. I want to understand the rules of the game
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+2. I want to have the ability to see my name in the terminal
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+3. I want the game to play and not wait for my input
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+4. I want the ability to rotate shapes so I can be strategical 
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+5. I want to know how long the game takes to solve
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+6. I want to see my current score
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+7. I want to see my name and score in the top results if I score high
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+8. I want the ability to see my next shape so I can be strategical
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+9. I want to see shapes in different colors
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+10. I want the terminal game to be visually pleasing
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+11. I want to see no profanity in the scores or terminal
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+12. I want the user to understand the game rules easily
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+13. I want the user of the terminal game to not have to constantly enter input
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+14. I want the user to be able to update the database with there score
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+16. I want the user to be able to see the top scores
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+17. I want my terminal game to have different shapes and colors for the game pieces
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+18. I want my terminal game to be interactive
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+19. Any known errors should be handled and feedback should be provided to the user
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+20. If any errors occur the user should be able to navigate to the desired area in the terminal
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+
 [Back to Top](#table-of-contents)
 ## Bugs
 | Bug | Fix |
