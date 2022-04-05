@@ -7,10 +7,10 @@ class User():
     Creates a user name object.
     """
     def __init__(self):
-        self.user_name = self._get_user_name()
+        self.user_name = self.get_user_name()
 
 
-    def _get_user_name(self):
+    def get_user_name(self):
         """
         When called it allows the user to input a name.
         It checks for profanity and loops using recursion until valid.
@@ -26,19 +26,19 @@ class User():
                 raise ValueError(
                     '\033[31mProfanity detected\033[0m'
                 )
-            if self._definitely_no_profanity(name) is True:
+            if self.definitely_no_profanity(name) is True:
                 raise ValueError(
                     '\033[31mProfanity detected\033[0m'
                 )
         except ValueError as error:
             console.clear_console()
             print(f'Invalid username entered: {error}, please try again.\n\n\n')
-            self._get_user_name()
+            self.get_user_name()
 
         return self.user_name
 
-    
-    def _definitely_no_profanity(self, name):
+
+    def definitely_no_profanity(self, name):
         """
         Checks the users name string to see if profanity can be found.
         Returns True if profanity detected.
@@ -47,7 +47,6 @@ class User():
         letters_tested = ''
         for char in self.user_name:
             letters_tested += char
-            
             if profanity.contains_profanity(letters_tested):
                 return True
         return False
