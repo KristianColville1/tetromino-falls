@@ -29,16 +29,16 @@ Developer: Kristian Colville
     * [Python Logic](#python-logic)
 * [Features](#features)
 * [Data Model](#data-model)
+* [Testing](#testing)
+    * [Testing User Stories](#testing-user-stories)
 * [Validation](#validation)
     * [HTML Validation](#html-validation)
     * [CSS Validation](#css-validation)
     * [JavaScript Validation](#javascript-validation)
-    * [LightHouse](#lighthouse)
-* [Testing](#testing)
-    * [Python Testing](#python-testing)
-        * [PEP8 Testing](#pep8-testing)
+    * [Python validation](#python-validation)
+        * [PEP8 validation](#pep8-validation)
         * [Linters](#Linters)
-    * [Testing User Stories](#testing-user-stories)
+    * [LightHouse](#lighthouse)
 * [Bugs](#bugs)
 * [Deployment](#deployment)
     * [Version Control](#version-control)
@@ -107,11 +107,12 @@ The goals of this project include:
 12. I want the user to understand the game rules easily
 13. I want the user of the terminal game to not have to constantly enter input
 14. I want the user to be able to update the database with there score
-16. I want the user to be able to see the top scores
-17. I want my terminal game to have different shapes and colors for the game pieces
-18. I want my terminal game to be interactive
-19. Any known errors should be handled and feedback should be provided to the user
-20. If any errors occur the user should be able to navigate to the desired area in the terminal
+15. I want the user to be able to see the top scores
+16. I want my terminal game to have different shapes and colors for the game pieces
+17. I want my terminal game to be interactive
+18. Any known errors should be handled and feedback should be provided to the user
+19. If any errors occur the user should be able to navigate to the desired area in the terminal
+20. I want any known profanity detected and removed from my terminal game to make the game family friendly
 
 [Back to Top](#table-of-contents)
 ## Design
@@ -156,15 +157,8 @@ As mentioned above some CSS was implemented. I chose to use [Google Fonts](https
 [Back to Top](#table-of-contents)
 ## Data Model
 [Back to Top](#table-of-contents)
-## Validation
-### HTML Validation
-### CSS Validation
-### JavaScript Validation
-### LightHouse
 
-[Back to Top](#table-of-contents)
 ## Testing
-### Python Testing
 ### Testing User Stories
 
 1. I want to understand the rules of the game
@@ -321,7 +315,7 @@ As mentioned above some CSS was implemented. I chose to use [Google Fonts](https
 </details>
 
 
-16. I want the user to be able to see the top scores
+15. I want the user to be able to see the top scores
 
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
@@ -332,7 +326,7 @@ As mentioned above some CSS was implemented. I chose to use [Google Fonts](https
 </details>
 
 
-17. I want my terminal game to have different shapes and colors for the game pieces
+16. I want my terminal game to have different shapes and colors for the game pieces
 
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
@@ -343,7 +337,7 @@ As mentioned above some CSS was implemented. I chose to use [Google Fonts](https
 </details>
 
 
-18. I want my terminal game to be interactive
+17. I want my terminal game to be interactive
 
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
@@ -354,7 +348,7 @@ As mentioned above some CSS was implemented. I chose to use [Google Fonts](https
 </details>
 
 
-19. Any known errors should be handled and feedback should be provided to the user
+18. Any known errors should be handled and feedback should be provided to the user
 
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
@@ -365,7 +359,7 @@ As mentioned above some CSS was implemented. I chose to use [Google Fonts](https
 </details>
 
 
-20. If any errors occur the user should be able to navigate to the desired area in the terminal
+19. If any errors occur the user should be able to navigate to the desired area in the terminal
 
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
@@ -375,13 +369,35 @@ As mentioned above some CSS was implemented. I chose to use [Google Fonts](https
 <summary>See Screenshot</summary>
 </details>
 
+
+20. I want any known profanity detected and removed from my terminal game to make the game family friendly
+
+| Feature | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| 1 | 2 | 3 | 4 |
+
+<details>
+<summary>See Screenshot</summary>
+</details>
+
+
+## Validation
+### HTML Validation
+### CSS Validation
+### JavaScript Validation
+### Python Validation
+#### PEP8 Validation
+#### Linters
+### LightHouse
+
+[Back to Top](#table-of-contents)
 
 [Back to Top](#table-of-contents)
 ## Bugs
 | Bug | Fix |
 | --- | --- |
 | Curses objects interfering with user input | Tried refactoring code blocks and discovered after trying to make a window class that the issue was because the objects were initialized before trying to get user input, I separated the code structure in run.py and this helped|
-| Shapes not displaying correctly with when adding shapes to board, they end up just displaying cubes | (in progress) |
+| Shapes not displaying correctly when adding shapes to board, they end up just displaying cubes | (in progress) |
 | The profanity checker works well but on testing it with conjoined words it failed to detect some simple profanity | To make this game as family friendly as possible a function was added to the User class to check each individual character, this has helped stop known profanity from being displayed in the Tetromino Falls score board for the user names |
 | 1 | 2 |
 | 1 | 2 |
@@ -473,7 +489,7 @@ If you have python correctly installed and the necessary packages the game shoul
 [Back to Top](#table-of-contents)
 ## Credits
 
-Ternary operator for clearing the console if an error occurs taken from [Delf Stack](https://www.delftstack.com/howto/python/python-clear-console/).
+Function for clearing the console if an error occurs taken from [Delf Stack](https://www.delftstack.com/howto/python/python-clear-console/).
 
 [Back to Top](#table-of-contents)
 ## Acknowledgements
