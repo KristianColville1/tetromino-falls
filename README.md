@@ -68,13 +68,48 @@ The goals of this project include:
 - Create the game using python
 
 [Back to Top](#table-of-contents)
-## User Experience
+## User Experience (UX)
 ### Target Audience
+
+- This game can be played by anyone who enjoys puzzle-based games
+- Any user who likes interactive games
+- Any user that enjoys a challenge with easy to understand rules.
 ### User Requirements and Expectations
+
+- Game rules that are easy to understand
+- Clear navigation through the terminal game
+- Any errors or actions are handled and work as expected
+- The game can update the database for users and scores
+- There is feedback given where appropriate
+- The user is not expected to constantly enter input to the play the game
+- The user can find any relevant information they need
+- The game should be family friendly and avoid profanity
+
 [Back to Top](#table-of-contents)
 ## User Stories
 ### Site User
+
+1. I want to understand the rules of the game
+2. I want to have the ability to see my name in the terminal
+3. I want the game to play and not wait for my input
+4. I want the ability to rotate shapes so I can be strategical 
+5. I want to know how long the game takes to solve
+6. I want to see my current score
+7. I want to see my name and score in the top results if I score high
+8. I want the ability to see my next shape so I can be strategical
+9. I want to see shapes in different colors
+10. I want the terminal game to be visually pleasing
+
 ### Site Owner
+
+11. I want the user to understand the game rules easily
+12. I want the user of the terminal game to not have to constantly enter input
+13. I want the user to be able to update the database with there score
+14. I want the user to be able to see the top scores
+15. I want my terminal game to have different shapes and colors for the game pieces
+16. I want my terminal game to be interactive
+17. Any known errors should be handled and feedback should be provided to the user
+18. If any errors occur the user should be able to navigate to the desired area in the terminal
 [Back to Top](#table-of-contents)
 ## Design
 ### Color Scheme
