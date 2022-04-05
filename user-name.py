@@ -1,6 +1,6 @@
 """This file handles the user input for user name creation"""
-
 from better_profanity import profanity
+import console
 
 class User:
     """
@@ -15,4 +15,15 @@ class User:
         When called it allows the user to input a name.
         It checks for profanity and loops using recursion until valid.
         """
-        return True
+        try:
+            name = input('Enter your name: ')
+            if len(name) < 4 or len(name) > 12:
+                raise ValueError(
+                    'username must be at least 4 characters\n and no more than 12'
+                )
+        except ValueError as error:
+            console.clear_console()
+            print(f'Invalid username entered: {error}, please try again.\n\n\n')
+            return False
+
+        return name
