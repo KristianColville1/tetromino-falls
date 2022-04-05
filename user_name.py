@@ -17,6 +17,7 @@ class User():
         """
         try:
             name = input('Enter your name: ')
+            self.user_name = name
             if len(name) < 4 or len(name) > 12:
                 raise ValueError(
                     'username must be at least 4 characters\n and no more than 12'
@@ -25,10 +26,28 @@ class User():
                 raise ValueError(
                     '\033[31mProfanity detected\033[0m'
                 )
-            self.user_name = name
+            if self._definitely_no_profanity(name) is True:
+                raise ValueError(
+                    '\033[31mProfanity detected\033[0m'
+                )
         except ValueError as error:
             console.clear_console()
             print(f'Invalid username entered: {error}, please try again.\n\n\n')
             self._get_user_name()
 
         return self.user_name
+
+    
+    def _definitely_no_profanity(self, name):
+        """
+        Checks the users name string to see if profanity can be found.
+        Returns True if profanity detected.
+        """
+        self.user_name = name
+        letters_tested = ''
+        for char in self.user_name:
+            letters_tested += char
+            
+            if profanity.contains_profanity(letters_tested):
+                return True
+        return False

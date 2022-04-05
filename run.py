@@ -5,14 +5,13 @@ Tetromino Falls is terminal based game displayed in the browser.
 import time
 import sys
 import curses
-import os
 import random
+import console
+from user_name import User
 from curses import wrapper
 from curses.textpad import rectangle
 
 
-# ternary operator taken from https://www.delftstack.com/howto/python/python-clear-console/
-clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
 # tetromino shapes
 SHAPES = {
@@ -45,7 +44,7 @@ def print_welcome_text():
                 'An error occurred fetching the welcome message.. sorry about that..'
             )
     except IOError as error:
-        clearConsole()
+        console.clear_console()
         print(f'Oops something went wrong!\n\033[31m{error}\033[0m')
     time.sleep(3)
 
@@ -54,17 +53,7 @@ def get_user_name():
     """
     Gets the users name and checks the database for conflicting names.
     """
-    try:
-        name = input('Enter your name: ')
-        if len(name) < 4 or len(name) > 12:
-            raise ValueError(
-                'username must be at least 4 characters\n and no more than 12'
-            )
-    except ValueError as error:
-        clearConsole()
-        print(f'Invalid username entered: {error}, please try again.\n\n\n')
-        return False
-    return name
+
 
 
 def what_next_user():
@@ -73,17 +62,17 @@ def what_next_user():
     Start the game, load instructions or exit.
     """
     try:
-        print(f'\n\nHere are the options available {USER_NAME}:\n')
+        print(f'\n\nHere are the options available {USER_NAME.user_name}:\n')
         print("\t\033[0;33mEnter '\033[31mp\033[0;33m' to play the game.")
         print("\tEnter '\033[31mi\033[0;33m' for instructions..")
         print("\tEnter '\033[31me\033[0;33m' to exit the program.\033[0m")
-        user_decision = input(f'\n So what will it be {USER_NAME}?\n ')
+        user_decision = input(f'\n So what will it be {USER_NAME.user_name}?\n ')
         if user_decision not in ('p', 'i', 'e'):
             raise ValueError(
                 f"""You need to enter something else as \033[36m{user_decision}\033[0m is invalid"""
             )
     except ValueError as error:
-        clearConsole()
+        console.clear_console()
         print(f'\n\t\033[31mInvalid data received...\033[0m \n{error}, please try again')
         return False
     return user_decision
@@ -128,7 +117,7 @@ def get_instructions():
                 "Failed to read instructions from welcome.txt..."
             )
     except IOError as error:
-        clearConsole()
+        console.clear_console()
         print(f'\033[31m\n{error}\033[0m')
 
 
@@ -147,7 +136,7 @@ def exit_program():
         if user_decision == 'n':
             get_next_action()
         elif user_decision == 'y':
-            clearConsole()
+            console.clear_console()
             thanks_for_playing()
             sys.exit()
     except ValueError as error:
@@ -162,7 +151,7 @@ def thanks_for_playing():
     try:
         file = open('goodbye.txt', encoding='utf8')
         message = file.read()
-        clearConsole()
+        console.clear_console()
         print(message)
         time.sleep(4)
         file.close()
@@ -274,17 +263,17 @@ def main(stdscr):
 
     while True:
         try:
-            y += 1
+            y_axis += 1
             time.sleep(0.3)
             key = stdscr.getkey()
             if key == 'KEY_RIGHT':
-                x += 1
+                x_axis += 1
             elif key == 'KEY_LEFT':
-                x -= 1
+                x_axis -= 1
             elif key == 'KEY_DOWN':
-                y += 1
+                y_axis += 1
             elif key == 'KEY_UP':
-                y -= 1
+                y_axis -= 1
             stdscr.clear()
             
             rectangle(stdscr, 1, 4, 21, 42)
@@ -294,7 +283,7 @@ def main(stdscr):
                     f'The {key} not work try something else'
                 )
         except KeyError as error:
-            stdscr.addstr(20, 20, f'{error}')
+            stdscr.addstr(20, 30, f'{error}')
 
     stdscr.getch()
 
@@ -302,9 +291,7 @@ def main(stdscr):
 print_welcome_text()
 
 # get and check user name, keep repeating until valid
-USER_NAME = get_user_name()
-if USER_NAME is False:
-    while USER_NAME is False:
-        USER_NAME = get_user_name()
+USER_NAME = User()
+print(USER_NAME.user_name)
 
 get_next_action()
