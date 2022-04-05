@@ -33,10 +33,11 @@ Developer: Kristian Colville
     * [HTML Validation](#html-validation)
     * [CSS Validation](#css-validation)
     * [JavaScript Validation](#javascript-validation)
-    * [Accessibility](#accessibility)
-    * [Performance](#performance)
+    * [LightHouse](#lighthouse)
 * [Testing](#testing)
-    * [Device Testing](#device-testing)
+    * [Python Testing](#python-testing)
+        * [PEP8 Testing](#pep8-testing)
+        * [Linters](#Linters)
     * [Testing User Stories](#testing-user-stories)
 * [Bugs](#bugs)
 * [Deployment](#deployment)
@@ -136,11 +137,11 @@ The goals of this project include:
 ### HTML Validation
 ### CSS Validation
 ### JavaScript Validation
-### Accessibility
-### Performance
+### LightHouse
+
 [Back to Top](#table-of-contents)
 ## Testing
-### Device Testing
+### Python Testing
 ### Testing User Stories
 
 1. I want to understand the rules of the game
@@ -149,11 +150,21 @@ The goals of this project include:
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
 
+<details>
+<summary>See Screenshot</summary>
+</details>
+
+
 2. I want to have the ability to see my name in the terminal
 
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
+
+<details>
+<summary>See Screenshot</summary>
+</details>
+
 
 3. I want the game to play and not wait for my input
 
@@ -161,11 +172,21 @@ The goals of this project include:
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
 
+<details>
+<summary>See Screenshot</summary>
+</details>
+
+
 4. I want the ability to rotate shapes so I can be strategical 
 
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
+
+<details>
+<summary>See Screenshot</summary>
+</details>
+
 
 5. I want to know how long the game takes to solve
 
@@ -173,11 +194,21 @@ The goals of this project include:
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
 
+<details>
+<summary>See Screenshot</summary>
+</details>
+
+
 6. I want to see my current score
 
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
+
+<details>
+<summary>See Screenshot</summary>
+</details>
+
 
 7. I want to see my name and score in the top results if I score high
 
@@ -185,11 +216,21 @@ The goals of this project include:
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
 
+<details>
+<summary>See Screenshot</summary>
+</details>
+
+
 8. I want the ability to see my next shape so I can be strategical
 
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
+
+<details>
+<summary>See Screenshot</summary>
+</details>
+
 
 9. I want to see shapes in different colors
 
@@ -197,11 +238,21 @@ The goals of this project include:
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
 
+<details>
+<summary>See Screenshot</summary>
+</details>
+
+
 10. I want the terminal game to be visually pleasing
 
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
+
+<details>
+<summary>See Screenshot</summary>
+</details>
+
 
 11. I want to see no profanity in the scores or terminal
 
@@ -209,11 +260,21 @@ The goals of this project include:
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
 
+<details>
+<summary>See Screenshot</summary>
+</details>
+
+
 12. I want the user to understand the game rules easily
 
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
+
+<details>
+<summary>See Screenshot</summary>
+</details>
+
 
 13. I want the user of the terminal game to not have to constantly enter input
 
@@ -221,11 +282,21 @@ The goals of this project include:
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
 
+<details>
+<summary>See Screenshot</summary>
+</details>
+
+
 14. I want the user to be able to update the database with there score
 
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
+
+<details>
+<summary>See Screenshot</summary>
+</details>
+
 
 16. I want the user to be able to see the top scores
 
@@ -233,11 +304,21 @@ The goals of this project include:
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
 
+<details>
+<summary>See Screenshot</summary>
+</details>
+
+
 17. I want my terminal game to have different shapes and colors for the game pieces
 
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
+
+<details>
+<summary>See Screenshot</summary>
+</details>
+
 
 18. I want my terminal game to be interactive
 
@@ -245,17 +326,31 @@ The goals of this project include:
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
 
+<details>
+<summary>See Screenshot</summary>
+</details>
+
+
 19. Any known errors should be handled and feedback should be provided to the user
 
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
 
+<details>
+<summary>See Screenshot</summary>
+</details>
+
+
 20. If any errors occur the user should be able to navigate to the desired area in the terminal
 
 | Feature | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
 | 1 | 2 | 3 | 4 |
+
+<details>
+<summary>See Screenshot</summary>
+</details>
 
 
 [Back to Top](#table-of-contents)
