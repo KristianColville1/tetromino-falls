@@ -6,10 +6,12 @@ import time
 import sys
 import curses
 import random
-import console
-from user_name import User
 from curses import wrapper
 from curses.textpad import rectangle
+from playsound import playsound
+import console
+from user_name import User
+
 
 
 
@@ -73,7 +75,7 @@ def what_next_user():
             )
     except ValueError as error:
         console.clear_console()
-        print(f'\n\t\033[31mInvalid data received...\033[0m \n{error}, please try again')
+        print(f'\n\t\033[31mInvalid input received...\033[0m \n{error}, please try again')
         return False
     return user_decision
 
@@ -83,6 +85,7 @@ def get_next_action():
     Play the game, get instructions or exit program
     """
     # gets and checks the users decision on next actions
+    console.clear_console()
     decision = what_next_user()
     if decision is False:
         while decision is False:
@@ -108,10 +111,22 @@ def get_instructions():
     """
     print('\033[0;33m')
     try:
+        console.clear_console()
         file = open('instructions.txt', encoding='utf8')
         instructions = file.read()
         file.close()
         print(f"{instructions}\033[0m")
+        try:
+            read_instructions = input('\033[31m\nEnter "y" and hit enter to continue: \033[0m')
+            if read_instructions not in ('Y', 'y'):
+                raise ValueError(
+                    '\033[36m\nEnter the letter y for yes or n for no\n\033[0m'
+                )
+        except ValueError as error:
+            print(error)
+            time.sleep(2)
+            console.clear_console()
+            get_instructions()
         if len(instructions) < 1:
             raise IOError(
                 "Failed to read instructions from welcome.txt..."
@@ -119,6 +134,7 @@ def get_instructions():
     except IOError as error:
         console.clear_console()
         print(f'\033[31m\n{error}\033[0m')
+    get_next_action()
 
 
 def exit_program():
@@ -128,7 +144,7 @@ def exit_program():
     """
     try:
         check_input = 'Are you absolutely sure you want to exit the program? y/n '
-        user_decision = input(f'\033[0;33m{check_input}:\033[0m')
+        user_decision = input(f'\033[0;31m{check_input}:\033[0m')
         if user_decision not in ('y', 'n'):
             raise ValueError(
                 f'\n\033[31m{user_decision}\033[0m is not valid input, try again...\n'
@@ -146,7 +162,7 @@ def exit_program():
 
 def thanks_for_playing():
     """
-    When the user decides to quit the game this message is displayed in the terminal
+    When the user decides to quit the game this message is displayed in the terminal.
     """
     try:
         file = open('goodbye.txt', encoding='utf8')
@@ -250,17 +266,17 @@ def main(stdscr):
     """
     #returns the colors for the game objects after initializing the curses
     colors = start_curses()
-    
+
     stdscr.clear()
     rectangle(stdscr, 1, 4, 21, 42)
     stdscr.refresh()
     shape = SHAPES['I']
     color = colors[random.randrange(6)]
     y_axis, x_axis = 0, 0
-    
+
     # creates a matrix for the game grid to manipulate
     game_grid = create_game_grid()
-
+    playsound('assets/sounds/bensound-dreams.mp3')
     while True:
         try:
             y_axis += 1
@@ -275,7 +291,6 @@ def main(stdscr):
             elif key == 'KEY_UP':
                 y_axis -= 1
             stdscr.clear()
-            
             rectangle(stdscr, 1, 4, 21, 42)
             stdscr.refresh()
             if key not in ('KEY_RIGHT', 'KEY_LEFT', 'KEY_DOWN', 'KEY_UP'):
