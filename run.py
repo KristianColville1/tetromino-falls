@@ -270,6 +270,18 @@ def create_game_grid():
     return grid_tensor
 
 
+def move_shape(window, y_axis, x_axis, t_speed, shape, color):
+    """
+    Used for threading in the game window.
+    This function is used to separate waiting for user input.
+    It takes the window object and updates the shape position
+    according to the specified time represented as t_speed.
+    """
+    window.addstr(y_axis, x_axis, shape, color)
+    time.sleep(t_speed)
+
+
+
 def main(stdscr):
     """
     Main function calls all the necessary functions to run the game.
@@ -309,38 +321,7 @@ def main(stdscr):
         elif key == 'KEY_UP':
             y_axis -= 1
         game_window.refresh()
-    # game_grid = create_game_grid()
-    # counter = 0
-    # for i in game_grid:
-    #     for j in i:
-    #         for k in j:
-    #             if k == 0:
-    #                 stdscr.addstr(counter, k, '0')
-    #         counter += 1
 
-    # while True:
-    #     try:
-    #         y_axis += 1
-    #         time.sleep(0.3)
-    #         key = stdscr.getkey()
-    #         if key == 'KEY_RIGHT':
-    #             x_axis += 1
-    #         elif key == 'KEY_LEFT':
-    #             x_axis -= 1
-    #         elif key == 'KEY_DOWN':
-    #             y_axis += 1
-    #         elif key == 'KEY_UP':
-    #             y_axis -= 1
-    #         stdscr.clear()
-
-    #         rectangle(stdscr, 1, 4, 21, 42)
-    #         stdscr.refresh()
-    #         if key not in ('KEY_RIGHT', 'KEY_LEFT', 'KEY_DOWN', 'KEY_UP'):
-    #             raise KeyError(
-    #                 f'The {key} not work try something else'
-    #             )
-    #     except KeyError as error:
-    #         stdscr.addstr(20, 30, f'{error}')
 
     stdscr.getch()
 
