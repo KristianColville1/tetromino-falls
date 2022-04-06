@@ -288,47 +288,60 @@ def main(stdscr):
     test_array = [
         [['a'],['b'],[1],[1],['c'],['d'],['e'],['f']],
         [['a'],['b'],[1],[1],['c'],['d'],['e'],['f']],
-        [['a'],['b'],[1],[1],['c'],['d'],['e'],['f']],
-        [['a'],['b'],[1],[1],['c'],['d'],['e'],['f']]
+        [['a'],['b'],[1],[1],[1],[1],['c'],['d'],['e'],['f']],
+        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']]
         ]
     
+    # while the game is not over clear the screen,
+    # add a shape formated as sequential strings,
+    # add the values in at column 16 of the game window,
+    # for each array within the 2d arrays,
+    # assign letter checker to zero,
+    # for the value in the 1d array
+    # Add the index of the value to the col num,
+    # begin letter checker and build up shape object
+    # get input and refresh.
     while True:
         g_win.clear()
-        y_axis = 1
         for two_arr in test_array:
             x_axis = 16
             for one_arr in two_arr:
+                letter_checker = 0
                 for val in one_arr:
                     x_axis += one_arr.index(val) + 1
-                    g_win.addstr(20, 20, f'{one_arr.index(val) + 1}')
                     if val == 0:
-                        continue
+                        letter_checker += 1
+                        if letter_checker == 8:
+                            y_axis -= 1
                     if val == 1:
+                        # a space is used for each value, it makes them more square in terminal
                         g_win.addstr(y_axis, x_axis, ' ', color)
             y_axis += 1
-                
+        try:
+            key = stdscr.getkey()
+            if key == 'KEY_RIGHT':
+                if x_axis < 37:
+                    x_axis += 1
+            elif key == 'KEY_LEFT':
+                if x_axis > 3:
+                    x_axis -= 1
+            elif key == 'KEY_DOWN':
+                if y_axis < 20:
+                    y_axis += 1
+            elif key == 'KEY_UP':
+                y_axis -= 1
+        except:
+            key = None
+        if y_axis < 21:
+            y_axis -= 3
+        if y_axis == 21:
+            y_axis = 0
+        g_win.border('|', '|', ' ', '|')
+        time.sleep(1)
         g_win.refresh()
-        time.sleep(10)
-        # try:
-        #     key = stdscr.getkey()
-        #     if key == 'KEY_RIGHT':
-        #         if x_ax < 37:
-        #             x_ax += 1
-        #     elif key == 'KEY_LEFT':
-        #         if x_ax > 3:
-        #             x_ax -= 1
-        #     elif key == 'KEY_DOWN':
-        #         y_ax += 1
-        #     elif key == 'KEY_UP':
-        #         y_ax -= 1
-        # except:
-        #     key = None
 
-        # g_win.clear()
-        # y_ax += 1
 
-        # g_win.addstr(y_ax, x_ax, '    ', color)
-        # g_win.border('|', '|', ' ', '|')
+        
         # time.sleep(1)
         # g_win.refresh()
 
