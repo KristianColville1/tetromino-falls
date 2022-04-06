@@ -1,6 +1,7 @@
 """Class shape generates the game objects for Tetromino falls"""
 import random
 import curses
+
 class Shape():
     """
     When called it will produce a random shape and color for the game.
@@ -57,7 +58,6 @@ class Shape():
             ]],
 }
 
-
     # background curses color pairs initialized
     curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLUE)
     curses.init_pair(2, curses.COLOR_WHITE, curses.COLOR_CYAN)
@@ -86,9 +86,10 @@ class Shape():
     white = curses.color_pair(7)
 
     colors = [blue, cyan, red, yellow, green, purple, white]
-    
+
     def __init__(self):
         self.shape = self.get_shape()
+        self.color = self.get_color()
 
 
     def get_shape(self):
@@ -96,11 +97,12 @@ class Shape():
         Returns a random shape to use as game objects in
         Tetromino Falls.
         """
+
+        # initializes the game objects
         curses.initscr()
 
         keys = ['I', 'J', 'L', 'O', 'T', 'S', 'Z']
         rand_shape = self.SHAPES[keys[random.randrange(7)]]
-
         return rand_shape
 
     def get_color(self):
@@ -108,7 +110,9 @@ class Shape():
         Returns a random color to use on game objects in
         Tetromino Falls.
         """
+
         # Allows the curses colors to be accessed and used
         curses.start_color()
+
         color = self.colors[random.randrange(7)]
         return color
