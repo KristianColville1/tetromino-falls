@@ -12,58 +12,7 @@ from user_name import User
 
 
 # tetromino shapes
-SHAPES = {
-    'I':[
-        [
-            [[1],['b'],['c'],['d']],
-            [[1],['b'],['c'],['d']],
-            [[1],['b'],['c'],['d']],
-            [[1],['b'],['c'],['d']],
-            ]],
-    'J':[
-        [
-            [['a'],[1],['c'],['d']],
-            [['a'],[1],['c'],['d']],
-            [[1],[1],['c'],['d']],
-            [['a'],['b'],['c'],['d']],
-            ]],
-    'L':[
-        [
-            [[1],['b'],['c'],['d']],
-            [[1],['b'],['c'],['d']],
-            [[1],[1],['c'],['d']],
-            [['a'],['b'],['c'],['d']],
-            ]],
-    'O':[
-        [
-            [['a'],['b'],['c'],['d']],
-            [['a'],[1],[1],['d']],
-            [['a'],[1],[1],['d']],
-            [['a'],['b'],['c'],['d']],
-            ]],
-    'T':[
-        [
-            [[1],[1],[1],['d']],
-            [['a'],[1],['c'],['d']],
-            [['a'],['b'],['c'],['d']],
-            [['a'],['b'],['c'],['d']],
-            ]],
-    'S':[
-        [
-            [['a'],[1],[1],['d']],
-            [[1],[1],['c'],['d']],
-            [['a'],['b'],['c'],['d']],
-            [['a'],['b'],['c'],['d']],
-            ]],
-    'Z':[
-        [
-            [[1],[1],['c'],['d']],
-            [['a'],[1],[1],['d']],
-            [['a'],['b'],['c'],['d']],
-            [['a'],['b'],['c'],['d']],
-            ]],
 
-}
 
 def print_welcome_text():
     """
@@ -218,65 +167,7 @@ def start_curses():
     Specifically allows the colors to be used and windows to be created.
     Returns the colors after curses color pairs are initialized.
     """
-    curses.initscr()
 
-    # Allows the curses colors to be accessed and used
-    curses.start_color()
-
-    # background curses color pairs initialized
-    curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLUE)
-    curses.init_pair(2, curses.COLOR_WHITE, curses.COLOR_CYAN)
-    curses.init_pair(3, curses.COLOR_WHITE, curses.COLOR_RED)
-    curses.init_pair(4, curses.COLOR_WHITE, curses.COLOR_YELLOW)
-    curses.init_pair(5, curses.COLOR_WHITE, curses.COLOR_GREEN)
-    curses.init_pair(6, curses.COLOR_WHITE, curses.COLOR_MAGENTA)
-    curses.init_pair(7, curses.COLOR_WHITE, curses.COLOR_WHITE)
-
-    # text curses color pairs initialized
-    curses.init_pair(8, curses.COLOR_BLUE, curses.COLOR_BLACK)
-    curses.init_pair(9, curses.COLOR_CYAN, curses.COLOR_BLACK)
-    curses.init_pair(10, curses.COLOR_RED, curses.COLOR_BLACK)
-    curses.init_pair(11, curses.COLOR_YELLOW, curses.COLOR_BLACK)
-    curses.init_pair(12, curses.COLOR_GREEN, curses.COLOR_BLACK)
-    curses.init_pair(13, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
-    curses.init_pair(14, curses.COLOR_WHITE, curses.COLOR_BLACK)
-
-    # background colors with white text
-    blue = curses.color_pair(1)
-    cyan = curses.color_pair(2)
-    red = curses.color_pair(3)
-    yellow = curses.color_pair(4)
-    green = curses.color_pair(5)
-    purple = curses.color_pair(6)
-    white = curses.color_pair(7)
-
-    colors = [blue, cyan, red, yellow, green, purple, white]
-
-    return colors
-
-
-def rotate_shape(shape_array):
-    """
-    Rotate shape takes one argument called shape_array.
-    The argument returns the shape array after rotating it counter clockwise.
-    """
-    rotated_shape = []
-    for array in shape_array:
-        for val in array:
-            rotate_shape
-
-    return rotated_shape
-
-
-def get_random_shape():
-    """
-    When called it returns a random shape from SHAPES.
-    The returned data is a 2D array.
-    """
-    keys = ['I', 'J', 'L', 'O', 'T', 'S', 'Z']
-
-    rand_shape = SHAPES[keys[random.randrange(7)]]
-    return rand_shape
 
 
 def create_game_grid():
@@ -305,35 +196,20 @@ def check_user_input():
     """
     Checks user input to game.
     """
+
+
 def main(stdscr):
     """
     Main function calls all the necessary functions to run the game.
     """
-    #returns the colors for the game objects after initializing the curses
-    colors = start_curses()
+    # calls to initialize curses
+    start_curses()
 
     stdscr.clear()
     stdscr.refresh()
-    shape = get_random_shape()
-    color = colors[random.randrange(6)]
     y_axis, x_axis = 0, 1
-
     g_win = curses.newwin(21, 41, 1, 3)
-
     stdscr.nodelay(True)
-    
-    # while the game is not over clear the screen,
-    # add a shape formated as sequential strings,
-    # add the values in at column 16 of the game window,
-    # for each array within the 2d arrays,
-    # assign letter checker to zero,
-    # for the value in the 1d array
-    # Add the index of the value to the col num,
-    # begin letter checker and build up shape object
-    # get input and refresh.
-    # while True:
-    #     g_win.clear()
-    # test_array =
     
     # while the game is not over clear the screen,
     # add a shape formated as sequential strings,
