@@ -6,8 +6,9 @@ import sys
 import curses
 import random
 from curses import wrapper
-import console
-from user_name import User
+from tetromino.tetromino.shape import Shape
+import tetromino.tetromino.console as console
+from tetromino.tetromino.user_name import User
 
 def print_welcome_text():
     """
@@ -157,7 +158,8 @@ def start_curses():
     Specifically allows the colors to be used and windows to be created.
     Returns the colors after curses color pairs are initialized.
     """
-
+    curses.initscr()
+    curses.start_color()
 
 def create_game_grid():
     """
@@ -181,12 +183,25 @@ def create_game_grid():
     return grid_tensor
 
 
-def main(stdscr):
+def drop_new_shape():
+    """
+    Handles the array conversion to print a shape to the terminal.
+    """
+
+
+def main(full_window):
     """
     Main function calls all the necessary functions to run the game.
     """
     # calls to initialize curses
     start_curses()
+    full_window.clear()
+    full_window.refresh()
+    game_obj = Shape()
+
+    full_window.addstr(5, 5, f'{game_obj.get_shape()}', game_obj.get_color())
+    full_window.getkey()
+    time.sleep(5)
 
 
 print_welcome_text()

@@ -1,6 +1,6 @@
 """This file handles the user input for user name creation"""
 from better_profanity import profanity
-import console
+import tetromino.tetromino.console as console
 
 class User():
     """
