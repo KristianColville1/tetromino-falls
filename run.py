@@ -14,53 +14,54 @@ from user_name import User
 # tetromino shapes
 SHAPES = {
     'I':[
-        [[1],[1],['c'],['d'],['e'],['f'],['g'],['h']],
-        [[1],[1],['c'],['d'],['e'],['f'],['g'],['h']],
-        [[1],[1],['c'],['d'],['e'],['f'],['g'],['h']],
-        [[1],[1],['c'],['d'],['e'],['f'],['g'],['h']],
-    ]
-        ,
+        [
+            [[1],['b'],['c'],['d']],
+            [[1],['b'],['c'],['d']],
+            [[1],['b'],['c'],['d']],
+            [[1],['b'],['c'],['d']],
+            ]],
     'J':[
-        [['a'],['b'],[1],[1],['e'],['f'],['g'],['h']],
-        [['a'],['b'],[1],[1],['e'],['f'],['g'],['h']],
-        [[1],[1],[1],[1],['e'],['f'],['g'],['h']],
-        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
-    ]
-        ,
+        [
+            [['a'],[1],['c'],['d']],
+            [['a'],[1],['c'],['d']],
+            [[1],[1],['c'],['d']],
+            [['a'],['b'],['c'],['d']],
+            ]],
     'L':[
-        [[1],[1],['c'],['d'],['e'],['f'],['g'],['h']],
-        [[1],[1],['c'],['d'],['e'],['f'],['g'],['h']],
-        [[1],[1],[1],[1],['e'],['f'],['g'],['h']],
-        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
-    ]
-        ,
+        [
+            [[1],['b'],['c'],['d']],
+            [[1],['b'],['c'],['d']],
+            [[1],[1],['c'],['d']],
+            [['a'],['b'],['c'],['d']],
+            ]],
     'O':[
-        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
-        [['a'],['b'],[1],[1],[1],[1],['g'],['h']],
-        [['a'],['b'],[1],[1],[1],[1],['g'],['h']],
-        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
-    ]
-        ,
+        [
+            [['a'],['b'],['c'],['d']],
+            [['a'],[1],[1],['d']],
+            [['a'],[1],[1],['d']],
+            [['a'],['b'],['c'],['d']],
+            ]],
     'T':[
-        [['a'],[1],[1],[1],[1],['f'],['g'],['h']],
-        [['a'],['b'],[1],[1],['e'],['f'],['g'],['h']],
-        [['a'],['b'],[1],[1],['e'],['f'],['g'],['h']],
-        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
-    ]
-        ,
+        [
+            [[1],[1],[1],['d']],
+            [['a'],[1],['c'],['d']],
+            [['a'],['b'],['c'],['d']],
+            [['a'],['b'],['c'],['d']],
+            ]],
     'S':[
-        [['a'],['b'],[1],[1],[1],[1],['g'],['h']],
-        [[1],[1],[1],[1],['e'],['f'],['g'],['h']],
-        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
-        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
-    ]
-        ,
+        [
+            [['a'],[1],[1],['d']],
+            [[1],[1],['c'],['d']],
+            [['a'],['b'],['c'],['d']],
+            [['a'],['b'],['c'],['d']],
+            ]],
     'Z':[
-        [[1],[1],[1],[1],['e'],['f'],['g'],['h']],
-        [['a'],['b'],[1],[1],[1],[1],['g'],['h']],
-        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
-        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
-    ]
+        [
+            [[1],[1],['c'],['d']],
+            [['a'],[1],[1],['d']],
+            [['a'],['b'],['c'],['d']],
+            [['a'],['b'],['c'],['d']],
+            ]],
 
 }
 
@@ -259,13 +260,10 @@ def rotate_shape(shape_array):
     Rotate shape takes one argument called shape_array.
     The argument returns the shape array after rotating it counter clockwise.
     """
-    rows, cols = len(shape_array), len(shape_array[0])
-    rotated_shape = [[None] * rows for _ in range(cols)]
-
-
-    for col in range(cols):
-        for row in range(rows - 1, -1, -1):
-            rotated_shape[cols - col - 1][row] = shape_array[rows][cols]
+    rotated_shape = []
+    for array in shape_array:
+        for val in array:
+            rotate_shape
 
     return rotated_shape
 
@@ -303,6 +301,10 @@ def create_game_grid():
     return grid_tensor
 
 
+def check_user_input():
+    """
+    Checks user input to game.
+    """
 def main(stdscr):
     """
     Main function calls all the necessary functions to run the game.
@@ -312,21 +314,13 @@ def main(stdscr):
 
     stdscr.clear()
     stdscr.refresh()
-    shape = SHAPES['I']
-    shape = '            '
+    shape = get_random_shape()
     color = colors[random.randrange(6)]
-    y_axis, x_axis = 1, 1
+    y_axis, x_axis = 0, 1
 
     g_win = curses.newwin(21, 41, 1, 3)
 
     stdscr.nodelay(True)
-    
-    test_array = [
-        [['a'],['b'],[1],[1],['c'],['d'],['e'],['f']],
-        [['a'],['b'],[1],[1],['c'],['d'],['e'],['f']],
-        [['a'],['b'],[1],[1],[1],[1],['c'],['d'],['e'],['f']],
-        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']]
-        ]
     
     # while the game is not over clear the screen,
     # add a shape formated as sequential strings,
@@ -352,16 +346,11 @@ def main(stdscr):
     # get input and refresh.
     while True:
         g_win.clear()
-        for two_arr in test_array:
+        for two_arr in shape:
             x_axis = 16
             for one_arr in two_arr:
-                letter_checker = 0
                 for val in one_arr:
                     x_axis += one_arr.index(val) + 1
-                    if val == 0:
-                        letter_checker += 1
-                        if letter_checker == 8:
-                            y_axis -= 1 # used to make sure incase last line has no val for terminal
                     if val == 1:
                         # a space is used for each value, it makes them more square in terminal
                         g_win.addstr(y_axis, x_axis, ' ', color)
@@ -385,9 +374,12 @@ def main(stdscr):
             y_axis -= 3
         if y_axis == 21:
             y_axis = 0
+            shape = get_random_shape()
+            shape = rotate_shape(shape)
+            color = colors[random.randrange(6)]
         g_win.border('|', '|', ' ', '|')
-        time.sleep(1)
-    g_win.refresh()
+        time.sleep(.3)
+        g_win.refresh()
 
     #
 
