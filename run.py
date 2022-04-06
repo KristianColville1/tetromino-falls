@@ -7,7 +7,7 @@ import curses
 import random
 from curses import wrapper
 from tetromino.tetromino.shape import Shape
-import tetromino.tetromino.console as console
+from tetromino.tetromino import console
 from tetromino.tetromino.user_name import User
 
 def print_welcome_text():
