@@ -8,7 +8,6 @@ import curses
 import random
 from curses import wrapper
 from curses.textpad import rectangle
-from playsound import playsound
 import console
 from user_name import User
 
@@ -276,7 +275,6 @@ def main(stdscr):
 
     # creates a matrix for the game grid to manipulate
     game_grid = create_game_grid()
-    playsound('assets/sounds/bensound-dreams.mp3')
     while True:
         try:
             y_axis += 1
