@@ -6,8 +6,8 @@ import time
 import sys
 import curses
 import random
+import threading
 from curses import wrapper
-from curses.textpad import rectangle
 import console
 from user_name import User
 
@@ -250,13 +250,24 @@ def get_random_shape():
 
 def create_game_grid():
     """
-    Creates a matrix for the game grid for Tetromino Falls"""
-    grid_matrix = []
-    for j in range(21):
-        grid_matrix.append([])
-        for _ in range(21):
-            grid_matrix[j].append([0])
-    return grid_matrix
+    Creates a tensor array for the game grid for Tetromino Falls.
+    """
+    # this grid tensor is composed of a 3D array
+    # the idea is to use 1s and 0s to manipulate the board output
+
+    # i tested a nested for loop with 3 loops and the results show
+    # that there is 860 arrays within the tensor holding the value 0
+
+    # every square in the tetromino shape will contain 2 values
+    # 860 / 2 is 430, so there are 430 positions to manipulate through
+
+    # 21 rows with 41 cols
+    grid_tensor = []
+    for row in range(21):
+        grid_tensor.append([])
+        for _ in range(41):
+            grid_tensor[row].append([0])
+    return grid_tensor
 
 
 def main(stdscr):
@@ -267,36 +278,69 @@ def main(stdscr):
     colors = start_curses()
 
     stdscr.clear()
-    rectangle(stdscr, 1, 4, 21, 42)
     stdscr.refresh()
     shape = SHAPES['I']
     color = colors[random.randrange(6)]
     y_axis, x_axis = 0, 0
-
-    # creates a matrix for the game grid to manipulate
-    game_grid = create_game_grid()
+    
+    game_window = curses.newwin(21, 41, 1, 3)
+    game_window.clear()
+    
     while True:
-        try:
+        y_axis = min(y_axis, 20)
+        # if y_axis == 21:
+        #     y_axis = 0
+        game_window.clear()
+        game_window.bkgdset('_')
+        # rectangle(game_window, 0, 0, 19, 40)
+            #         y_axis += 1
+    #         time.sleep(0.3)
+
+        game_window.addstr(y_axis, x_axis + 18, '    ', colors[random.randrange(6)])
+        time.sleep(1)
+        y_axis += 1
+        key = game_window.getch()
+        if key == 'KEY_RIGHT':
+            x_axis += 1
+        elif key == 'KEY_LEFT':
+            x_axis -= 1
+        elif key == 'KEY_DOWN':
             y_axis += 1
-            time.sleep(0.3)
-            key = stdscr.getkey()
-            if key == 'KEY_RIGHT':
-                x_axis += 1
-            elif key == 'KEY_LEFT':
-                x_axis -= 1
-            elif key == 'KEY_DOWN':
-                y_axis += 1
-            elif key == 'KEY_UP':
-                y_axis -= 1
-            stdscr.clear()
-            rectangle(stdscr, 1, 4, 21, 42)
-            stdscr.refresh()
-            if key not in ('KEY_RIGHT', 'KEY_LEFT', 'KEY_DOWN', 'KEY_UP'):
-                raise KeyError(
-                    f'The {key} not work try something else'
-                )
-        except KeyError as error:
-            stdscr.addstr(20, 30, f'{error}')
+        elif key == 'KEY_UP':
+            y_axis -= 1
+        game_window.refresh()
+    # game_grid = create_game_grid()
+    # counter = 0
+    # for i in game_grid:
+    #     for j in i:
+    #         for k in j:
+    #             if k == 0:
+    #                 stdscr.addstr(counter, k, '0')
+    #         counter += 1
+
+    # while True:
+    #     try:
+    #         y_axis += 1
+    #         time.sleep(0.3)
+    #         key = stdscr.getkey()
+    #         if key == 'KEY_RIGHT':
+    #             x_axis += 1
+    #         elif key == 'KEY_LEFT':
+    #             x_axis -= 1
+    #         elif key == 'KEY_DOWN':
+    #             y_axis += 1
+    #         elif key == 'KEY_UP':
+    #             y_axis -= 1
+    #         stdscr.clear()
+
+    #         rectangle(stdscr, 1, 4, 21, 42)
+    #         stdscr.refresh()
+    #         if key not in ('KEY_RIGHT', 'KEY_LEFT', 'KEY_DOWN', 'KEY_UP'):
+    #             raise KeyError(
+    #                 f'The {key} not work try something else'
+    #             )
+    #     except KeyError as error:
+    #         stdscr.addstr(20, 30, f'{error}')
 
     stdscr.getch()
 
