@@ -44,7 +44,7 @@ def print_welcome_text():
     except IOError as error:
         console.clear_console()
         print(f'Oops something went wrong!\n\033[31m{error}\033[0m')
-    time.sleep(3)
+    # time.sleep(3)
 
 
 def get_user_name():
@@ -283,12 +283,29 @@ def main(stdscr):
 
     g_win = curses.newwin(21, 41, 1, 3)
     g_win.clear()
-    g_win.bkgdset('_')
+
     g_win.nodelay(True)
     while True:
-        key = g_win.getkey()
+        g_win.clear()
+        y_ax = min(y_ax, 19)
+        try:
+            key = g_win.getkey()
+        except:
+            key = None
         
-
+        if key == 'KEY_RIGHT':
+            x_ax += 1
+        elif key == 'KEY_LEFT':
+            x_ax -= 1   
+        elif key == 'KEY_DOWN':
+            y_ax += 1      
+            
+        g_win.addstr(y_ax, x_ax, '    ', color)
+        g_win.border('|', '|', ' ', '|')
+        y_ax += 1
+        g_win.refresh()
+        time.sleep(0.9)
+        
     stdscr.getch()
 
 
