@@ -13,19 +13,55 @@ from user_name import User
 
 # tetromino shapes
 SHAPES = {
-    'I':[[2, 3], [2, 3], [2, 3], [2, 3]]
+    'I':[
+        [[1],[1],['c'],['d'],['e'],['f'],['g'],['h']],
+        [[1],[1],['c'],['d'],['e'],['f'],['g'],['h']],
+        [[1],[1],['c'],['d'],['e'],['f'],['g'],['h']],
+        [[1],[1],['c'],['d'],['e'],['f'],['g'],['h']],
+    ]
         ,
-    'J':[[0, 1, 0, 0], [0, 1, 0, 0], [1, 1, 0, 0], [0, 0, 0, 0]]
+    'J':[
+        [['a'],['b'],[1],[1],['e'],['f'],['g'],['h']],
+        [['a'],['b'],[1],[1],['e'],['f'],['g'],['h']],
+        [[1],[1],[1],[1],['e'],['f'],['g'],['h']],
+        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
+    ]
         ,
-    'L':[[0, 1, 0, 0], [0, 1, 0, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
+    'L':[
+        [[1],[1],['c'],['d'],['e'],['f'],['g'],['h']],
+        [[1],[1],['c'],['d'],['e'],['f'],['g'],['h']],
+        [[1],[1],[1],[1],['e'],['f'],['g'],['h']],
+        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
+    ]
         ,
-    'O':[[0, 0, 0, 0], [0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]]
+    'O':[
+        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
+        [['a'],['b'],[1],[1],[1],[1],['g'],['h']],
+        [['a'],['b'],[1],[1],[1],[1],['g'],['h']],
+        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
+    ]
         ,
-    'T':[[1, 1, 1, 0], [0, 1, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+    'T':[
+        [['a'],[1],[1],[1],[1],['f'],['g'],['h']],
+        [['a'],['b'],[1],[1],['e'],['f'],['g'],['h']],
+        [['a'],['b'],[1],[1],['e'],['f'],['g'],['h']],
+        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
+    ]
         ,
-    'S':[[0, 1, 1, 0], [1, 1, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+    'S':[
+        [['a'],['b'],[1],[1],[1],[1],['g'],['h']],
+        [[1],[1],[1],[1],['e'],['f'],['g'],['h']],
+        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
+        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
+    ]
         ,
-    'Z':[[0, 1, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+    'Z':[
+        [[1],[1],[1],[1],['e'],['f'],['g'],['h']],
+        [['a'],['b'],[1],[1],[1],[1],['g'],['h']],
+        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
+        [['a'],['b'],['c'],['d'],['e'],['f'],['g'],['h']],
+    ]
+
 }
 
 def print_welcome_text():
@@ -301,6 +337,19 @@ def main(stdscr):
     # Add the index of the value to the col num,
     # begin letter checker and build up shape object
     # get input and refresh.
+    # while True:
+    #     g_win.clear()
+    # test_array =
+    
+    # while the game is not over clear the screen,
+    # add a shape formated as sequential strings,
+    # add the values in at column 16 of the game window,
+    # for each array within the 2d arrays,
+    # assign letter checker to zero,
+    # for the value in the 1d array
+    # Add the index of the value to the col num,
+    # begin letter checker and build up shape object
+    # get input and refresh.
     while True:
         g_win.clear()
         for two_arr in test_array:
@@ -312,7 +361,7 @@ def main(stdscr):
                     if val == 0:
                         letter_checker += 1
                         if letter_checker == 8:
-                            y_axis -= 1
+                            y_axis -= 1 # used to make sure incase last line has no val for terminal
                     if val == 1:
                         # a space is used for each value, it makes them more square in terminal
                         g_win.addstr(y_axis, x_axis, ' ', color)
@@ -338,14 +387,9 @@ def main(stdscr):
             y_axis = 0
         g_win.border('|', '|', ' ', '|')
         time.sleep(1)
-        g_win.refresh()
+    g_win.refresh()
 
-
-        
-        # time.sleep(1)
-        # g_win.refresh()
-
-    stdscr.getch()
+    #
 
 
 print_welcome_text()
