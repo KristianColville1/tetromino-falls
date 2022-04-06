@@ -6,12 +6,9 @@ import time
 import sys
 import curses
 import random
-import threading
 from curses import wrapper
 import console
 from user_name import User
-
-
 
 
 # tetromino shapes
@@ -270,18 +267,6 @@ def create_game_grid():
     return grid_tensor
 
 
-def move_shape(window, y_axis, x_axis, t_speed, shape, color):
-    """
-    Used for threading in the game window.
-    This function is used to separate waiting for user input.
-    It takes the window object and updates the shape position
-    according to the specified time represented as t_speed.
-    """
-    window.addstr(y_axis, x_axis, shape, color)
-    time.sleep(t_speed)
-
-
-
 def main(stdscr):
     """
     Main function calls all the necessary functions to run the game.
@@ -292,36 +277,17 @@ def main(stdscr):
     stdscr.clear()
     stdscr.refresh()
     shape = SHAPES['I']
+    shape = '            '
     color = colors[random.randrange(6)]
-    y_axis, x_axis = 0, 0
-    
-    game_window = curses.newwin(21, 41, 1, 3)
-    game_window.clear()
-    
+    y_ax, x_ax = 0, 0
+
+    g_win = curses.newwin(21, 41, 1, 3)
+    g_win.clear()
+    g_win.bkgdset('_')
+    g_win.nodelay(True)
     while True:
-        y_axis = min(y_axis, 20)
-        # if y_axis == 21:
-        #     y_axis = 0
-        game_window.clear()
-        game_window.bkgdset('_')
-        # rectangle(game_window, 0, 0, 19, 40)
-            #         y_axis += 1
-    #         time.sleep(0.3)
-
-        game_window.addstr(y_axis, x_axis + 18, '    ', colors[random.randrange(6)])
-        time.sleep(1)
-        y_axis += 1
-        key = game_window.getch()
-        if key == 'KEY_RIGHT':
-            x_axis += 1
-        elif key == 'KEY_LEFT':
-            x_axis -= 1
-        elif key == 'KEY_DOWN':
-            y_axis += 1
-        elif key == 'KEY_UP':
-            y_axis -= 1
-        game_window.refresh()
-
+        key = g_win.getkey()
+        
 
     stdscr.getch()
 
