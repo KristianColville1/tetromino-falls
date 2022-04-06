@@ -1,7 +1,6 @@
 """
 Tetromino Falls is terminal based game displayed in the browser.
 """
-
 import time
 import sys
 import curses
@@ -9,10 +8,6 @@ import random
 from curses import wrapper
 import console
 from user_name import User
-
-
-# tetromino shapes
-
 
 def print_welcome_text():
     """
@@ -31,13 +26,6 @@ def print_welcome_text():
         console.clear_console()
         print(f'Oops something went wrong!\n\033[31m{error}\033[0m')
     # time.sleep(3)
-
-
-def get_user_name():
-    """
-    Gets the users name and checks the database for conflicting names.
-    """
-
 
 
 def what_next_user():
@@ -61,6 +49,7 @@ def what_next_user():
         return False
     return user_decision
 
+
 def get_next_action():
     """
     Gets the users next action and will decide what route to take.
@@ -79,6 +68,7 @@ def get_next_action():
         get_instructions()
     else:
         exit_program()
+
 
 def start_game():
     """
@@ -169,7 +159,6 @@ def start_curses():
     """
 
 
-
 def create_game_grid():
     """
     Creates a tensor array for the game grid for Tetromino Falls.
@@ -192,72 +181,12 @@ def create_game_grid():
     return grid_tensor
 
 
-def check_user_input():
-    """
-    Checks user input to game.
-    """
-
-
 def main(stdscr):
     """
     Main function calls all the necessary functions to run the game.
     """
     # calls to initialize curses
     start_curses()
-
-    stdscr.clear()
-    stdscr.refresh()
-    y_axis, x_axis = 0, 1
-    g_win = curses.newwin(21, 41, 1, 3)
-    stdscr.nodelay(True)
-    
-    # while the game is not over clear the screen,
-    # add a shape formated as sequential strings,
-    # add the values in at column 16 of the game window,
-    # for each array within the 2d arrays,
-    # assign letter checker to zero,
-    # for the value in the 1d array
-    # Add the index of the value to the col num,
-    # begin letter checker and build up shape object
-    # get input and refresh.
-    while True:
-        g_win.clear()
-        for two_arr in shape:
-            x_axis = 16
-            for one_arr in two_arr:
-                for val in one_arr:
-                    x_axis += one_arr.index(val) + 1
-                    if val == 1:
-                        # a space is used for each value, it makes them more square in terminal
-                        g_win.addstr(y_axis, x_axis, ' ', color)
-            y_axis += 1
-        try:
-            key = stdscr.getkey()
-            if key == 'KEY_RIGHT':
-                if x_axis < 37:
-                    x_axis += 1
-            elif key == 'KEY_LEFT':
-                if x_axis > 3:
-                    x_axis -= 1
-            elif key == 'KEY_DOWN':
-                if y_axis < 20:
-                    y_axis += 1
-            elif key == 'KEY_UP':
-                y_axis -= 1
-        except:
-            key = None
-        if y_axis < 21:
-            y_axis -= 3
-        if y_axis == 21:
-            y_axis = 0
-            shape = get_random_shape()
-            shape = rotate_shape(shape)
-            color = colors[random.randrange(6)]
-        g_win.border('|', '|', ' ', '|')
-        time.sleep(.3)
-        g_win.refresh()
-
-    #
 
 
 print_welcome_text()
