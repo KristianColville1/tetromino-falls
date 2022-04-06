@@ -279,33 +279,59 @@ def main(stdscr):
     shape = SHAPES['I']
     shape = '            '
     color = colors[random.randrange(6)]
-    y_ax, x_ax = 0, 0
+    y_axis, x_axis = 1, 1
 
     g_win = curses.newwin(21, 41, 1, 3)
-    g_win.clear()
 
-    g_win.nodelay(True)
+    stdscr.nodelay(True)
+    
+    test_array = [
+        [['a'],['b'],[1],[1],['c'],['d'],['e'],['f']],
+        [['a'],['b'],[1],[1],['c'],['d'],['e'],['f']],
+        [['a'],['b'],[1],[1],['c'],['d'],['e'],['f']],
+        [['a'],['b'],[1],[1],['c'],['d'],['e'],['f']]
+        ]
+    
     while True:
         g_win.clear()
-        y_ax = min(y_ax, 19)
-        try:
-            key = g_win.getkey()
-        except:
-            key = None
-        
-        if key == 'KEY_RIGHT':
-            x_ax += 1
-        elif key == 'KEY_LEFT':
-            x_ax -= 1   
-        elif key == 'KEY_DOWN':
-            y_ax += 1      
-            
-        g_win.addstr(y_ax, x_ax, '    ', color)
-        g_win.border('|', '|', ' ', '|')
-        y_ax += 1
+        y_axis = 1
+        for two_arr in test_array:
+            x_axis = 16
+            for one_arr in two_arr:
+                for val in one_arr:
+                    x_axis += one_arr.index(val) + 1
+                    g_win.addstr(20, 20, f'{one_arr.index(val) + 1}')
+                    if val == 0:
+                        continue
+                    if val == 1:
+                        g_win.addstr(y_axis, x_axis, ' ', color)
+            y_axis += 1
+                
         g_win.refresh()
-        time.sleep(0.9)
-        
+        time.sleep(10)
+        # try:
+        #     key = stdscr.getkey()
+        #     if key == 'KEY_RIGHT':
+        #         if x_ax < 37:
+        #             x_ax += 1
+        #     elif key == 'KEY_LEFT':
+        #         if x_ax > 3:
+        #             x_ax -= 1
+        #     elif key == 'KEY_DOWN':
+        #         y_ax += 1
+        #     elif key == 'KEY_UP':
+        #         y_ax -= 1
+        # except:
+        #     key = None
+
+        # g_win.clear()
+        # y_ax += 1
+
+        # g_win.addstr(y_ax, x_ax, '    ', color)
+        # g_win.border('|', '|', ' ', '|')
+        # time.sleep(1)
+        # g_win.refresh()
+
     stdscr.getch()
 
 
