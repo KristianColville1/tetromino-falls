@@ -101,7 +101,7 @@ def main(full_window):
             x_axis = 36
         elif x_axis < 1:
             x_axis = 1
-        time.sleep(0.6)
+        time.sleep(0.4)
         try:
             key = full_window.getkey()
         except:
@@ -120,11 +120,9 @@ def main(full_window):
                 y_axis = 17
         game.clear()
         game.addstr(y_axis, x_axis, '  ', shape.color)
-        game.border(' ', ' ', ' ', '*')
-        game.move(0, 0)
+        rectangle(game, 0, 0, 18, 37)
+        game.move(18, 36)
         game.refresh()
-
-
     full_window.refresh()
 
 GAME_OVER = False
