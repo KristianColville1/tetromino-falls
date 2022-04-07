@@ -51,7 +51,7 @@ class User():
                 return True
 
         try:
-            file = open('exclude.json', encoding='utf8')
+            file = open('profanity_wordlist.txt', encoding='utf8')
             profanity_list = file.read()
             for line in profanity_list:
                 if line in self.user_name:
