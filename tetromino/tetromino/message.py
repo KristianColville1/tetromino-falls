@@ -44,6 +44,7 @@ class Message:
             file = open('instructions.txt', encoding='utf8')
             instructions = file.read()
             file.close()
+            print(f"{instructions}\033[0m")
             try:
                 read_instructions = input('\033[31m\nEnter "y" and hit enter to continue: \033[0m')
                 if read_instructions not in ('Y', 'y'):
@@ -61,7 +62,7 @@ class Message:
         except IOError as error:
             console.clear_console()
             print(f'\033[31m\n{error}\033[0m')
-        return print(f"{instructions}\033[0m")
+        return
 
 
     def get_goodbye(self):
