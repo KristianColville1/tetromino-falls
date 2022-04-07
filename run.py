@@ -93,36 +93,37 @@ def main(full_window):
     full_window.nodelay(True)
     y_axis, x_axis = 0, 14
     full_window.clear()
-    rectangle(full_window, 1, 2, 21, 42)
+    
     while GAME_OVER is False:
         y_axis += 1
-        if y_axis > 18:
-            y_axis = 18
-        if x_axis > 36:
-            x_axis = 36
-        elif x_axis < 1:
-            x_axis = 1
-        time.sleep(1)
+        if y_axis > 20:
+            y_axis = 20
+        if x_axis > 30:
+            x_axis = 30
+        elif x_axis < 3:
+            x_axis = 3
+        time.sleep(.5)
         try:
             key = full_window.getkey()
         except:
             key = None
         if key == 'KEY_LEFT':
             x_axis -= 2
-            if x_axis < 1:
-                x_axis = 1
+            if x_axis < 3:
+                x_axis = 3
         elif key == 'KEY_RIGHT':
             x_axis += 2
-            if x_axis > 35:
-                x_axis = 35
+            if x_axis > 30:
+                x_axis = 30
         elif key == 'KEY_DOWN':
             y_axis += 1
-            if y_axis > 18:
-                y_axis = 18
-        game.clear()
-        game.addstr(y_axis, x_axis, '  ', shape.color)
-        game.move(18, 38)
-        game.refresh()
+            if y_axis > 20:
+                y_axis = 20
+        full_window.clear()
+        full_window.addstr(y_axis, x_axis, '  ', shape.color)
+        rectangle(full_window, 0, 2, 21, 32)
+        full_window.move(18, 38)
+        full_window.refresh()
     full_window.refresh()
 
 GAME_OVER = False
