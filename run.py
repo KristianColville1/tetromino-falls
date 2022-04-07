@@ -3,12 +3,11 @@ Tetromino Falls is terminal based game displayed in the browser.
 """
 import time
 import curses
-import random
 from curses import wrapper
-from tetromino.tetromino.game import Game
+from curses.textpad import rectangle
 from tetromino.tetromino.message import Message
 from tetromino.tetromino.shape import Shape
-from tetromino.tetromino.user_name import User
+
 
 def start_game():
     """
@@ -73,20 +72,60 @@ def clear_then_refresh(window):
     window.refresh()
 
 
+def create_game_window():
+    """
+    Creates a game window object and returns the object to the caller.
+    """
+    game_screen = curses.newwin(19, 39, 2, 3)
+    game_screen.border('|', '|', '.', '|')
+    return game_screen
+
+
 def main(full_window):
     """
     Main function calls all the necessary functions to run the game.
     """
     # calls to initialize curses
     start_curses()
-    clear_then_refresh(full_window)
-
+    full_window.clear()
+    game = create_game_window()
     shape = Shape()
-    shape_strings = format_shape(shape)
+    full_window.nodelay(True)
+    y_axis, x_axis = 0, 14
+    full_window.clear()
+    while GAME_OVER is False:
+        y_axis += 1
+        if y_axis > 17:
+            y_axis = 17
+        if x_axis > 36:
+            x_axis = 36
+        elif x_axis < 1:
+            x_axis = 1
+        time.sleep(0.4)
+        try:
+            key = full_window.getkey()
+        except:
+            key = None
+        if key == 'KEY_LEFT':
+            x_axis -= 2
+            if x_axis < 1:
+                x_axis = 1
+        elif key == 'KEY_RIGHT':
+            x_axis += 2
+            if x_axis > 35:
+                x_axis = 35
+        elif key == 'KEY_DOWN':
+            y_axis += 1
+            if y_axis > 17:
+                y_axis = 17
+        game.clear()
+        game.addstr(y_axis, x_axis, '  ', shape.color)
+        game.border('|', '|', '.', '|')
+        game.move(0, 0)
+        game.refresh()
 
-    game = Game(20, 36)
-    full_window.getkey()
-    time.sleep(5)
 
+    full_window.refresh()
 
+GAME_OVER = False
 start_game()
