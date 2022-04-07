@@ -102,7 +102,7 @@ def main(full_window):
             x_axis = 36
         elif x_axis < 1:
             x_axis = 1
-        time.sleep(0.4)
+        time.sleep(1)
         try:
             key = full_window.getkey()
         except:
