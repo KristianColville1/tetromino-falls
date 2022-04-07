@@ -6,28 +6,10 @@ import sys
 import curses
 import random
 from curses import wrapper
+from tetromino.tetromino.message import Message
 from tetromino.tetromino.shape import Shape
 from tetromino.tetromino import console
 from tetromino.tetromino.user_name import User
-
-def print_welcome_text():
-    """
-    Prints welcome text to terminal for user and waits for 3 seconds before moving on.
-    """
-    try:
-        file = open('welcome-msg.txt', encoding='utf8')
-        message = file.read()
-        print('\n\n\n\033[31m' + message + '\033[0m\n\n\n')
-        file.close()
-        if len(message) < 1:
-            raise IOError(
-                'An error occurred fetching the welcome message.. sorry about that..'
-            )
-    except IOError as error:
-        console.clear_console()
-        print(f'Oops something went wrong!\n\033[31m{error}\033[0m')
-    # time.sleep(3)
-
 
 def what_next_user():
     """
@@ -204,7 +186,8 @@ def main(full_window):
     time.sleep(5)
 
 
-print_welcome_text()
+text_print = Message()
+text_print.get_welcome()
 
 # get and check user name, keep repeating until valid
 USER_NAME = User()
