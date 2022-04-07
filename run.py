@@ -121,7 +121,7 @@ def main(full_window):
                 y_axis = 18
         game.clear()
         game.addstr(y_axis, x_axis, '  ', shape.color)
-        game.move(18, 39)
+        game.move(18, 38)
         game.refresh()
     full_window.refresh()
 

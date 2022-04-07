@@ -6,22 +6,19 @@ class Game():
     Deals with the curses module so y and x are written to match curses
     window objects.
     """
-    def __init__(self, y_pos, x_pos, y_size, x_size):
-        self.y_pos = y_pos
-        self.x_pos = x_pos
+    def __init__(self, y_size, x_size):
         self.y_size = y_size
         self.x_size = x_size
-        self.game_grid = self.create_game_grid()
 
 
     def create_game_grid(self):
         """
-        Creates a game window of the specified size to view in a terminal
-        window.
+        When game window is created a tensor array is also created to represent
+        the individual cells for rows and cols in the game window.
+        Allows the ability to manipulate the board and store objects.
         """
 
         grid = []
-        
         # for y rows insert x columns
         for _ in range(self.y_size):
             grid.append([])
