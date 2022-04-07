@@ -5,6 +5,7 @@ import time
 import curses
 import random
 from curses import wrapper
+from tetromino.tetromino.game import Game
 from tetromino.tetromino.message import Message
 from tetromino.tetromino.shape import Shape
 from tetromino.tetromino.user_name import User
@@ -13,19 +14,10 @@ def start_game():
     """
     Starts the game calls the main function.
     """
-    messages = Message()
-    messages.get_next_action()
+    tetromino = Message()
+    tetromino.get_next_action()
     wrapper(main)
 
-
-def start_curses():
-    """
-    Initializes the curses objects.
-    Specifically allows the colors to be used and windows to be created.
-    Returns the colors after curses color pairs are initialized.
-    """
-    curses.initscr()
-    curses.start_color()
 
 def create_game_grid():
     """
@@ -54,6 +46,32 @@ def drop_new_shape():
     Handles the array conversion to print a shape to the terminal.
     """
 
+def format_shape(shape):
+    """
+    Takes a shape and converts its arrays into printable strings for
+    the game. Returns an array holding the string values to be printed.
+    """
+    shape_strings = shape
+    return shape_strings
+
+
+def start_curses():
+    """
+    Initializes the curses objects.
+    Specifically allows the colors to be used and windows to be created.
+    Returns the colors after curses color pairs are initialized.
+    """
+    curses.initscr()
+    curses.start_color()
+
+
+def clear_then_refresh(window):
+    """
+    Clears a curses window object and refreshes the screen.
+    """
+    window.clear()
+    window.refresh()
+
 
 def main(full_window):
     """
@@ -61,11 +79,12 @@ def main(full_window):
     """
     # calls to initialize curses
     start_curses()
-    full_window.clear()
-    full_window.refresh()
-    game_obj = Shape()
+    clear_then_refresh(full_window)
 
-    full_window.addstr(5, 5, f'{game_obj.get_shape()}', game_obj.get_color())
+    shape = Shape()
+    shape_strings = format_shape(shape)
+
+    game = Game(20, 36)
     full_window.getkey()
     time.sleep(5)
 
