@@ -399,7 +399,7 @@ As mentioned above some CSS was implemented. I chose to use [Google Fonts](https
 | Curses objects interfering with user input | Tried refactoring code blocks and discovered after trying to make a window class that the issue was because the objects were initialized before trying to get user input, I separated the code structure in run.py and this helped|
 | Shapes not displaying correctly when adding shapes to board, they end up just displaying cubes | (in progress) |
 | The profanity checker works well but on testing it with conjoined words it failed to detect some simple profanity | To make this game as family friendly as possible a function was added to the User class to check each individual character, this has helped stop known profanity from being displayed in the Tetromino Falls score board for the user names |
-| 1 | 2 |
+| Game window background glitching on sometimes on refresh taking away appeal of game | Put a non refreshing background behind the game window and removed original from game |
 | 1 | 2 |
 | 1 | 2 |
 | 1 | 2 |
