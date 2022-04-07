@@ -74,9 +74,43 @@ class Message:
         return ''
 
 
+    def print_actions(self):
+        """
+        Asks the user what they would like to do next.
+        Start the game, load instructions or exit.
+        """
+        try:
+            print('\n\nHere are the options available:\n')
+            print("\t\033[0;33mEnter '\033[31mp\033[0;33m' to play the game.")
+            print("\tEnter '\033[31mi\033[0;33m' for instructions..")
+            print("\tEnter '\033[31me\033[0;33m' to exit the program.\033[0m")
+            user_decision = input('\n So what will it be?\n ')
+            if user_decision not in ('p', 'i', 'e'):
+                raise ValueError(
+                    f"You need to enter something else as \033[36m{user_decision}\033[0m is invalid"
+                )
+        except ValueError as error:
+            console.clear_console()
+            print(f'\n\t\033[31mInvalid input received...\033[0m \n{error}, please try again')
+            return False
+        return user_decision
+
+
     def get_next_action(self):
         """
-        Prints options to terminal for user to decide what route to take
-        in Tetromino Falls program.
+        Gets the users next action and will decide what route to take.
+        Play the game, get instructions or exit program
         """
-        return ''
+        # gets and checks the users decision on next actions
+        console.clear_console()
+        decision = self.print_actions()
+        if decision is False:
+            while decision is False:
+                decision = self.print_actions()
+
+        if decision == 'p':
+            return True
+        if decision == 'i':
+            self.get_instructions()
+        elif decision == 'e':
+            exit_program()
