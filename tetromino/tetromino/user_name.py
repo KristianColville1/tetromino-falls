@@ -49,4 +49,13 @@ class User():
             letters_tested += char
             if profanity.contains_profanity(letters_tested):
                 return True
+
+        try:
+            file = open('profanity_wordlist.txt', encoding='utf8')
+            profanity_list = file.read()
+            for line in profanity_list:
+                if line in self.user_name:
+                    return True
+        except IOError:
+            print('\033[31mChecking profanity list failed...\033[0m')
         return False
