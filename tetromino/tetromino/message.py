@@ -1,5 +1,6 @@
 """Handles printing text to terminal for Tetromino Falls"""
 import time
+import sys
 from tetromino.tetromino import console
 class Message:
     """
@@ -8,7 +9,6 @@ class Message:
     """
     def __init__(self):
         self.welcome = self.get_welcome()
-        self.get_next_action = self.get_next_action()
 
     def get_welcome(self):
         """
@@ -18,7 +18,6 @@ class Message:
             file = open('welcome-msg.txt', encoding='utf8')
             self.welcome = file.read()
             file.close()
-            
             if self.welcome is None:
                 raise IOError(
                     'An error occurred fetching the welcome message.. sorry about that..'
@@ -26,7 +25,6 @@ class Message:
         except IOError as error:
             console.clear_console()
             print(f'Oops something went wrong!\n\033[31m{error}\033[0m')
-
         try:
             print('\n\n\n\033[31m' + self.welcome + '\033[0m\n\n\n')
             input('\t\t\t\033[36mHit enter to continue...\033[0m')
@@ -69,9 +67,22 @@ class Message:
     def get_goodbye(self):
         """
         Prints the goodbye message to the terminal for the user for the
-        Tetromino Falls game.
+        Tetromino Falls game.When the user decides to quit the game this 
+        message is displayed in the terminal.
         """
-        return ''
+        try:
+            file = open('goodbye.txt', encoding='utf8')
+            message = file.read()
+            console.clear_console()
+            print(message)
+            time.sleep(4)
+            file.close()
+            if file is None:
+                raise IOError(
+                    'The thank you message failed to display...'
+                )
+        except IOError as error:
+            print(f"An error has occurred..\n {error}")
 
 
     def print_actions(self):
@@ -95,6 +106,28 @@ class Message:
             return False
         return user_decision
 
+    def exit_program(self):
+        """
+        Exits the program if the user decides to quit the game.
+        Loops using recursion until valid input is entered.
+        """
+        try:
+            check_input = 'Are you absolutely sure you want to exit the program? y/n '
+            user_decision = input(f'\033[0;31m{check_input}:\033[0m')
+            if user_decision not in ('y', 'n'):
+                raise ValueError(
+                    f'\n\033[31m{user_decision}\033[0m is not valid input, try again...\n'
+                )
+            if user_decision == 'n':
+                self.get_next_action()
+            elif user_decision == 'y':
+                console.clear_console()
+                self.get_goodbye()
+                sys.exit()
+        except ValueError as error:
+            print(f'{error}')
+            self.exit_program()
+
 
     def get_next_action(self):
         """
@@ -113,4 +146,4 @@ class Message:
         if decision == 'i':
             self.get_instructions()
         elif decision == 'e':
-            exit_program()
+            self.exit_program()
